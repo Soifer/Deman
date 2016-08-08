@@ -6,8 +6,9 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
 @Component({
   selector: 'my-app',
   template: `<navbar></navbar>
-             <h1>My First Angular 2 App</h1>
-             <router-outlet></router-outlet>  
+            <div class="mainContainer">
+              <router-outlet></router-outlet>  
+             </div>
             `,
 directives:[NavBarComponent,GenreComponent,ROUTER_DIRECTIVES]
 })

@@ -1,8 +1,8 @@
 import {Http, Response } from '@angular/http';
-import {Genre} from 'app/vod/models/genre';
+import {Genre} from '../../vod/models/genre';
 import {Injectable} from '@angular/core';
 import { Observable } from 'rxjs/Rx';
-import {Dal} from 'app/Dal/dal.service';
+import {Dal} from '../../Dal/dal.service';
 
 @Injectable()
 export class GenreService {

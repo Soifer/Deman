@@ -3,6 +3,6 @@ export class Genre{
         this.Id = data.Id;
         this.Title = data.GenreName;
     }
-    GenreId:number;
-    GeTitlenreName:string;
+    Id:number;
+    Title:string;
 }
