@@ -1,5 +1,5 @@
 <h2>Genre</h2>
-<table class="table table-striped table-hover ">
+<table class="table table-striped">
     <thead>
         <tr>
             <th>Id</th>
@@ -10,6 +10,10 @@
         <tr>
             <td>{{item.Id}}</td>
             <td>{{item.Title}}</td>
+            <td>
+                <crud-btn [Type]="'edit'"></crud-btn>
+                <crud-btn [Type]="'hide'"></crud-btn>
+            </td>
         </tr>
     </tbody>
 </table>

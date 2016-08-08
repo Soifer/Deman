@@ -1,14 +1,13 @@
 // Place your settings in this file to overwrite default and user settings.
 {
-    "editor.fontSize": 14,
-    "files.autoSaveDelay": 1000,
-    "files.autoSave": "off",
-    "files.exclude": {
-        "**/.git": true,
-        "**/.svn": true,
-        "**/*.js": true,
-        "**/*.map": true,
-        "**/.DS_Store": true
-    }
-    
+  "editor.fontSize": 14,
+  "files.autoSaveDelay": 1000,
+  "files.autoSave": "off",
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/*.js": true,
+    "**/*.map": true,
+    "**/.DS_Store": true
+  }
 }
