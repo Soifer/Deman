@@ -46,5 +46,14 @@ export class GenreComponent implements OnInit, OnDestroy {
         console.log(test);
 
     }
+    createUniqueId(prop: string, id: number): string {
+        return prop + String(id);
 
+    }
+
+
+    // form = new ControlGroup({
+    //     username: new Control('',Validators.required),
+    //     password: new Control('',Validators.required)
+    // });
 }

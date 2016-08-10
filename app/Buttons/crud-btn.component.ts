@@ -16,7 +16,7 @@ export class CrudBtnComponent {
     }
 
     onClick() {
-        this.change.emit();
+        this.change.emit(this.btn);
     }
 
 }

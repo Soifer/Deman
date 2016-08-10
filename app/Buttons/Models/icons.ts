@@ -7,8 +7,8 @@ export class CrudBtn {
     };
     public set Type(type) {
         switch (type) {
-            case "hide":
-                this._type = "glyphicon glyphicon-eye-open";
+            case "warning":
+                this._type = "glyphicon glyphicon-exclamation-sign";
                 break;
             case "unHide":
                 this._type = "glyphicon glyphicon-eye-close";

@@ -1,10 +1,9 @@
-export class Genre{
-    constructor(data:any){
+export class Genre {
+    constructor(data: any) {
         this.Id = data.Id;
         this.Title = data.GenreName;
     }
-    Id:number;
-    Title:string;
-    Visible:boolean = false;
-
+    Id: number;
+    Title: string;
+    Visible: boolean = false;
 }

@@ -17,5 +17,5 @@ body{
     border-top: none;
 }
 .visible{
-    visibility: hidden;
+    display: none;
 }
