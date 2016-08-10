@@ -1,19 +1,36 @@
-<h2>Genre</h2>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-        </tr>
-    </thead>
-    <tbody *ngFor="let item of genres">
-        <tr>
-            <td>{{item.Id}}</td>
-            <td>{{item.Title}}</td>
-            <td>
-                <crud-btn [Type]="'edit'"></crud-btn>
-                <crud-btn [Type]="'hide'"></crud-btn>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<div class="container">
+    <h2>Genre</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let item of genres">
+            <tr>
+                <td>
+                    <div [class.visible]="!item.Visible" class="col-sm-2">
+                        <form #f="ngForm">
+                            <input ngControl="genreTitle" #genreTitle="ngForm"
+                                   class="form-control input-sm" 
+                                   type="text" 
+                                   [value]="newTitle" 
+                                   (input)="newTitle = $event.target.value; onTouched('test');"
+                            />
+                            {{newTitle}}
+                        </form>
+                    </div>
+                    <div class="col-sm-10">
+                        {{item.Title}}
+                    </div>
+                </td>
+                <td class="pull-right">
+                    <crud-btn [class.visible]="!item.Visible" (change)="onBtnConfirmEdit(item)" [btn]="btnConfirmChange"></crud-btn> 
+                    <crud-btn (change)="onBtnEdit(item)" [btn]="btnEdit"></crud-btn>
+                    <crud-btn [btn]="btnHide"></crud-btn> 
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

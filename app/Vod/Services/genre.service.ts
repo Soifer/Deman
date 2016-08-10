@@ -9,12 +9,9 @@ export class GenreService {
     errorMessage: string;
     _dal: Dal;
     constructor(private _http: Http) {
-        console.log("service log");
-        
         this._dal = new Dal(_http);
     }
     getGenres(): Observable<Genre[]> {
-          console.log("get-genres");
         return this
             ._dal.GetItemsByUri('http://localhost/Nana10MVC/vod/genre/getall')
             .map((tasks: Array<any>) => {

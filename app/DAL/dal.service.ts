@@ -84,8 +84,6 @@ export class Dal {
             .catch(this.handleError);
     }
     GetItemsByUri(uri: string) {
-        console.log("get uri");
-        
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
         return this._http.get(uri)

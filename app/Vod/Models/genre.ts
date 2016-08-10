@@ -5,4 +5,6 @@ export class Genre{
     }
     Id:number;
     Title:string;
+    Visible:boolean = false;
+
 }
