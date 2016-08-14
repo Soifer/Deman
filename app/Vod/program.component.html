@@ -1,5 +1,5 @@
 <div class="container">
-    <h2>Genre</h2>
+    <h2>Program</h2>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -7,19 +7,19 @@
                 <th></th>
             </tr>
         </thead>
-        <tbody *ngFor="let item of genres; let i = index">
+        <tbody *ngFor="let item of programs; let i = index">
             <tr>
                 <td>
                     <div [class.visible]="!item.Visible" class="col-sm-2">
-                        <form [ngFormModel]="genreForm">
-                            <input ngControl="genreTitle" (change)="onInputChange(item)" #genreTitle="ngForm" class="form-control input-sm" type="text" [(ngModel)]="item.GenreName" (input)=" onTouched(item);" />
-                            <span *ngIf="genreTitle.touched && genreTitle.errors">
-                                <p *ngIf="genreTitle.errors.required" class="validator">required</p>
+                        <form [ngFormModel]="programForm">
+                            <input ngControl="programTitle" (change)="onInputChange(item)" #programTitle="ngForm" class="form-control input-sm" type="text" [(ngModel)]="item.Name" (input)=" onTouched(item);" />
+                            <span *ngIf="programTitle.touched && genreTitle.errors">
+                                <p *ngIf="programTitle.errors.required" class="validator">required</p>
                             </span>
                         </form>
                     </div>
                     <div [class.visible]="item.Visible" class="col-sm-10">
-                        {{item.GenreName}}
+                        {{item.Name}}
                     </div>
                 </td>
                 <td class="pull-right">

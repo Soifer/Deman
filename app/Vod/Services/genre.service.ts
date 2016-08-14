@@ -14,14 +14,15 @@ export class GenreService {
     getGenres(): Observable<Genre[]> {
         return this
             ._dal.GetItemsByUri('http://localhost/Nana10MVC/vod/genre/getall')
-            .map((tasks: Array<any>) => {
+            .map((genres: Array<Genre>) => {
                 let result: Array<Genre> = [];
-                if (tasks) {
-                    tasks.forEach((task) => {
-                        result.push(new Genre(task));
+                if (genres) {
+                    genres.forEach((genre: Genre) => {
+                       let newGenre = new Genre(genre);
+                        result.push(newGenre);
                     });
                 }
-               return result;
+                return result;
             })
             ;
     }

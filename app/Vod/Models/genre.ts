@@ -1,9 +1,12 @@
-export class Genre {
-    constructor(data: any) {
-        this.Id = data.Id;
-        this.Title = data.GenreName;
-    }
+import {UiEventsModel} from './uiEventsModel';
+
+export class Genre extends UiEventsModel {
     Id: number;
-    Title: string;
-    Visible: boolean = false;
+    GenreName: string;
+    constructor(data: Genre) {
+        this.Id = data.Id;
+        this.GenreName = data.GenreName;
+        this.Visible = false;
+        this.Changed = false;
+    }
 }

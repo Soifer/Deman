@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { NavBarComponent } from './Navigation/navbar.component';
-import { GenreComponent } from './Vod/genre.component';
 import { ROUTER_DIRECTIVES } from '@angular/router';
+import { GenreComponent } from './vod/genre.component';
+import { ProgramComponent } from './vod/program.component';
 
 @Component({
   selector: 'my-app',
@@ -10,6 +11,8 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
               <router-outlet></router-outlet>  
              </div>
             `,
-directives:[NavBarComponent,GenreComponent,ROUTER_DIRECTIVES]
+  directives: [NavBarComponent, ROUTER_DIRECTIVES],
+  precompile:[GenreComponent,ProgramComponent]
+
 })
 export class AppComponent { }

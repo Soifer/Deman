@@ -10,6 +10,9 @@ body{
 .red{
     color:red;
 }
+.blue{
+    color:blue;
+}
 .green{
     color:green;
 }
@@ -18,4 +21,8 @@ body{
 }
 .visible{
     display: none;
+}
+.validator{
+    color:red;
+    font-size: 10px;
 }
