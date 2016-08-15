@@ -8,11 +8,9 @@ import {CrudBtn} from './models/crud-btn';
 
 export class CrudBtnComponent {
     @Input() btn: CrudBtn;
-    @Output() change = new EventEmitter();
- 
+    @Output() change = new EventEmitter(); 
 
     ngOnInit() {
-
     }
 
     onClick() {

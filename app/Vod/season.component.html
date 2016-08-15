@@ -1,4 +1,4 @@
-    <h2>Program</h2>
+    <h2>Season</h2>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -11,9 +11,9 @@
                 <td>
                     <div [class.visible]="!item.Visible" class="col-sm-2">
                         <form [ngFormModel]="form">
-                            <input ngControl="programTitle" (change)="onInputChange(item)" #programTitle="ngForm" class="form-control input-sm" type="text" [(ngModel)]="item.Name" (input)=" onTouched(item);" />
-                            <span *ngIf="programTitle.touched && programTitle.errors">
-                                <p *ngIf="programTitle.errors.required" class="validator">required</p>
+                            <input ngControl="Name" (change)="onInputChange(item)" #Name="ngForm" class="form-control input-sm" type="text" [(ngModel)]="item.Name" (input)=" onTouched(item);" />
+                            <span *ngIf="Name.touched && Name.errors">
+                                <p *ngIf="Name.errors.required" class="validator">required</p>
                             </span>
                         </form>
                     </div>

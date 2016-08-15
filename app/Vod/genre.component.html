@@ -1,4 +1,3 @@
-<div class="container">
     <h2>Genre</h2>
     <table class="table table-striped">
         <thead>
@@ -7,12 +6,12 @@
                 <th></th>
             </tr>
         </thead>
-        <tbody *ngFor="let item of genres; let i = index">
+        <tbody *ngFor="let item of listT; let i = index">
             <tr>
                 <td>
                     <div [class.visible]="!item.Visible" class="col-sm-2">
-                        <form [ngFormModel]="genreForm">
-                            <input ngControl="genreTitle" (change)="onInputChange(item)" #genreTitle="ngForm" class="form-control input-sm" type="text" [(ngModel)]="item.GenreName" (input)=" onTouched(item);" />
+                        <form [ngFormModel]="form">
+                            <input ngControl="genreTitle" (change)="onInputChange(item)" #genreTitle="ngForm" class="form-control input-sm" type="text" [(ngModel)]="item.GenreName" (input)="onTouched(item);" />
                             <span *ngIf="genreTitle.touched && genreTitle.errors">
                                 <p *ngIf="genreTitle.errors.required" class="validator">required</p>
                             </span>
@@ -31,4 +30,3 @@
             </tr>
         </tbody>
     </table>
-</div>

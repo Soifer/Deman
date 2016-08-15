@@ -14,62 +14,17 @@ import {IVod} from './IVod.component';
     providers: [ProgramService],
     directives: [CrudBtnComponent, IconComponent]
 })
+export class ProgramComponent extends IVod<Program> {
 
-export class ProgramComponent implements IVod {
-    public programs: Array<Program>;
-    private sub: any;
-    btnEdit = new CrudBtn("edit", "");
-    btnHide = new CrudBtn("hide", "green");
-    btnConfirmEdit = new CrudBtn("confirmEdit", "");
-    iconAlert = new Icon("alert", "red");
-
-    programForm: ControlGroup;
-    private editAnotherField: Boolean = true;
-    private curentEditBtn: number;
-
-    constructor(private _service: ProgramService) {
-        this.programForm = new ControlGroup({
-            programTitle: new Control('', Validators.required)
+    constructor(public _service: ProgramService, fb: FormBuilder) {
+        super(_service);
+        this.form = fb.group({
+            programTitle: ['', Validators.required]
         });
     }
-    ngOnInit() {
-        this.sub = this._service.getPrograms().subscribe(data => {
-            this.programs = data;
-        });
-    }
-
-    ngOnDestroy() {
-        this.sub.unsubscribe();
-    }
-
-    onBtnEdit(program: Program) {
-        if (this.editAnotherField) {
-            this.curentEditBtn = program.Id;
-            this.editAnotherField = false;
-            program.Visible = !program.Visible;
-        } else
-            if (this.curentEditBtn == program.Id && !this.programForm.errors) {
-                this.editAnotherField = true;
-                program.Visible = !program.Visible;
-            }
-    }
-    onInputChange(program: Program) {
-        program.Changed = true;
-    }
-    onBtnConfirmEdit(program: Program) {
-        program.Changed = false;
-    }
-
-    onBtnHide(data: NgControlName) {
-
-    }
-    onTouched(test) {
-        console.log(test);
-
-    }
-
 
 }
+
 // export class genreValidator {
 
 //  title: Control;

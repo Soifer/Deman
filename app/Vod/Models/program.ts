@@ -1,7 +1,17 @@
 import {UiEventsModel} from './uiEventsModel';
 
 export class Program extends UiEventsModel {
-    Id: number;
+   constructor(data: Program) {
+    super();
+    this.Id = data.Id;
+    this.Name = data.Name;
+    this.Status = data.Status;
+    this.MediaStockImageID = data.MediaStockImageID;
+    this.ShowInDevices = data.ShowInDevices;
+    this.GenreID = data.GenreID;
+    this.FileExtensionID = data.FileExtensionID;
+    this.TVSerieSort = data.TVSerieSort;
+    }
     Name: string;
     Status: number;
     MediaStockImageID: number;
@@ -10,4 +20,3 @@ export class Program extends UiEventsModel {
     FileExtensionID: number;
     TVSerieSort: number;
 }
-
