@@ -34,7 +34,9 @@ footer{
   background: #fff;
 }
 
-
+md-sidenav-layout{
+height:1000px;
+}
 /** remove when fixed in angular2-material **/
 /** The overlay-container is an invisible element which contains all individual overlays. */
 .md-overlay-container {
@@ -51,3 +53,9 @@ footer{
   pointer-events: auto;
   box-sizing: border-box;
   z-index: 1000; }
+
+.overall{
+  width: 100%;
+  height: inherit;
+}
+

@@ -1,10 +1,15 @@
 import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 
+
+import { SideNavComponent } from './SideNav/sideNav.component';
+import { MenuBarComponent  } from './MenuBar/menuBar.component';
+import { GridComponent } from './Center/grid.component';
+import { ExpandedCardComponent } from './Center/expandedItem.component';
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -38,11 +43,11 @@ const APP_PROVIDERS = [
     About,
     Home,
     NoContent,
-    XLarge
+    XLarge, SideNavComponent, MenuBarComponent, GridComponent, ExpandedCardComponent
   ],
   imports: [ // import Angular's modules
     BrowserModule,
-    FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES, { useHash: true }),
     MdModule.forRoot()
@@ -62,17 +67,17 @@ export class AppModule {
     delete store.state;
   }
   hmrOnDestroy(store) {
-    var cmpLocation = this.appRef.components.map(cmp => cmp.location.nativeElement);
+    let cmpLocation = this.appRef.components.map(cmp => cmp.location.nativeElement);
     // recreate elements
-    var state = this.appState._state;
+    let state = this.appState._state;
     store.state = state;
-    store.disposeOldHosts = createNewHosts(cmpLocation)
+    store.disposeOldHosts = createNewHosts(cmpLocation);
     // remove styles
     removeNgStyles();
   }
   hmrAfterDestroy(store) {
     // display new elements
-    store.disposeOldHosts()
+    store.disposeOldHosts();
     delete store.disposeOldHosts;
   }
 }

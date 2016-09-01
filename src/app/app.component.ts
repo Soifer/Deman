@@ -16,37 +16,11 @@ import { AppState } from './app.service';
     './app.style.css'
   ],
   template: `
-    <md-content>
-      <md-toolbar color="primary">
-          <span>{{ name }}</span>
-          <span class="fill"></span>
-          <a md-button [routerLink]=" ['./'] ">
-            Index
-          </a>
-          <a md-button [routerLink]=" ['./home'] ">
-            Home
-          </a>
-          <a md-button [routerLink]=" ['./detail'] ">
-            Detail
-          </a>
-          <a md-button [routerLink]=" ['./about'] ">
-            About
-          </a>
-      </md-toolbar>
+  <div class="container overall">
+    <sideNav>
 
-      <md-progress-bar mode="indeterminate" color="primary" *ngIf="loading"></md-progress-bar>
-    
-      <main>
-        <router-outlet></router-outlet>
-      </main>
-
-      <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
-
-      <footer>
-        <span id="footerText">WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a></span>
-        <img [src]="angularclassLogo" width="6%">
-      </footer>
-    </md-content>
+    </sideNav>
+  </div>
   `
 })
 export class App {

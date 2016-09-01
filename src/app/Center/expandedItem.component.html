@@ -1,0 +1,46 @@
+<md-card class="md-warn" style="width:inherit;border-radius: 13px;z-index:100">
+  <md-card-title>
+    <md-card-title-text>
+      <span class="md-headline">Card with image</span>
+      <span class="md-subhead">{{item.Name}}</span>
+      <button class="btn btn-success">{{item.Name}}</button>
+      <div class="alert alert-success">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>{{item.Name}}!</strong> {{item.Text}}
+      </div>
+    </md-card-title-text>
+    <md-card-title-media>
+      <img class="card-media md-media-lg" [src]="item.Url">
+    </md-card-title-media>
+  </md-card-title>
+  <md-card-content>
+    <form [formGroup]="registerForm">
+      <label>Firstname:</label>
+      <md-input type="text" formControlName="firstname"></md-input>
+      <p *ngIf="registerForm.controls.firstname.errors">This field is required!</p>
+      <label>Lastname:</label>
+      <md-input type="text" formControlName="lastname" autofocus></md-input>
+
+      <fieldset formGroupName="address">
+        <span class="label label-default">Street:</span>
+
+        <md-input type="text" formControlName="street"></md-input>
+
+        <span class="label label-default">Zip:</span>
+        <md-input type="text" formControlName="zip" disabled>99999</md-input>
+
+        <span class="label label-default">City:</span>
+        <md-input type="text" formControlName="city"></md-input>
+      </fieldset>
+      <md-input placeholder="Character count (100 max)" maxLength="100" class="demo-full-width" value="Hello world. How are you?"
+        #characterCountHintExample>
+        <md-hint align="end">{{characterCountHintExample.characterCount}} / 100</md-hint>
+      </md-input>
+      <button md-raised-button [disableRipple]="true" type="submit" color="warn">Submit</button>
+    </form>
+  </md-card-content>
+  <md-card-actions layout="row" layout-align="end center">
+    <button md-fab color="accent" [disableRipple]="true"><md-icon class="md-24">check_circle</md-icon></button>
+    <button md-fab color="warn" [disableRipple]="true"><md-icon class="md-24">visibility</md-icon></button>
+  </md-card-actions>
+</md-card>

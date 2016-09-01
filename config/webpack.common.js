@@ -44,7 +44,7 @@ module.exports = {
    *
    * See: http://webpack.github.io/docs/configuration.html#cache
    */
-   //cache: false,
+  //cache: false,
 
   /*
    * The entry point for the bundle
@@ -55,8 +55,8 @@ module.exports = {
   entry: {
 
     'polyfills': './src/polyfills.browser.ts',
-    'vendor':    './src/vendor.browser.ts',
-    'main':      './src/main.browser.ts'
+    'vendor': './src/vendor.browser.ts',
+    'main': './src/main.browser.ts'
 
   },
 
@@ -81,6 +81,10 @@ module.exports = {
     modulesDirectories: ['node_modules'],
 
   },
+
+  // Source maps support ('inline-source-map' also works)
+  devtool: 'source-map',
+
 
   /*
    * Options affecting the normal modules.
