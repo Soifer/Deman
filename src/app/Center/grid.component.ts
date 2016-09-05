@@ -5,10 +5,17 @@ import { Component, OnInit } from '@angular/core';
   selector: 'centerGrid',
   templateUrl: 'grid.component.html',
 
-  styles: [`md-card{border:1px solid red;width:400px;}
+  styles: [`
+            md-card{border:1px solid red; min-width:200px; width:300px;}
             .card-container{
                             display: flex;
-                            flex-flow: row wrap;}`]
+                            flex-flow: row wrap;
+                          }
+             .card-container > md-card{
+                            margin: 10px;  
+                            border: 0 1px 1px 0;                          
+                          }
+             `]
 
 })
 export class GridComponent implements OnInit {
@@ -27,14 +34,11 @@ export class GridComponent implements OnInit {
     ,
     { 'Id': '5', 'Name': 'Five One', 'Url': 'http://loremflickr.com/320/240', 'isCollapsed': true, 'Text': 'adsfasdf' }
   ];
+  selectedItem:any;
   constructor() { }
-
+  onClick(item) {
+    this.selectedItem = item;
+  }
   ngOnInit() { }
 
-  collapse(item) {
-    for (let elem of this.items) {
-      elem.isCollapsed = true;
-    }
-    item.isCollapsed = !item.isCollapsed;
-  }
 }

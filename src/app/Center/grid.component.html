@@ -13,11 +13,13 @@
   </md-list-item>
 </md-list>-->
 <div class="card-container">
-  <md-card *ngFor="let item of items" (click)="collapse(item)">
-    {{item.Name}}
-    <div *ngIf="!item.isCollapsed" class="panel-collapse">
-      <expandedItem [item]='item' style="width:800px;"></expandedItem>
-    </div>
+  <md-card *ngFor="let item of items" (click)="onClick(item);">
+    <md-card-header>
+      <img md-card-avatar [src]="item.Url">
+      <md-card-title>{{item.Name}}</md-card-title>
+      <md-card-subtitle>{{item.Text}}</md-card-subtitle>
+   </md-card-header>
   </md-card>
-
 </div>
+<expandedItem [item]="selectedItem" ></expandedItem>
+

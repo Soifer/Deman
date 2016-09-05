@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
     styles: [`
               side {width:200px;}
               .sideNavItemHeader{min-width:120px;text-align:center;cursor:pointer;}
+              md-sidenav{margin:0px; padding-left:0px; padding-top:15px;}
+              .navPilsContainer{margin-bottom:5px;}
             `]
 })
 export class SideNavComponent implements OnInit {

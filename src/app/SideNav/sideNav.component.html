@@ -1,9 +1,15 @@
 <div layout="column">
   <md-sidenav-layout>
     <md-sidenav #left [opened]="true" mode="side" layout-padding class="side container-fluid ">
-      <div class="jumbotron">
+      <div class="navPilsContainer">
         <ul class="nav nav-pills nav-stacked">
           <li class="active btn-sm btn-primary btn-block sideNavItemHeader" (click)="isCollapsed = !isCollapsed">VOD</li>
+          <li [collapse]="isCollapsed" class="panel-collapse" *ngFor="let item of items"><a [routerLink]=" ['./detail']"> {{ item }} </a></li>
+        </ul>
+      </div>
+            <div>
+        <ul class="nav nav-pills nav-stacked">
+          <li class="active btn-sm btn-primary btn-block sideNavItemHeader" (click)="isCollapsed = !isCollapsed">NOT VOD</li>
           <li [collapse]="isCollapsed" class="panel-collapse" *ngFor="let item of items"><a [routerLink]=" ['./detail']"> {{ item }} </a></li>
         </ul>
       </div>

@@ -4,7 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
-import { CollapseModule, Ng2BootstrapModule  } from 'ng2-bootstrap/ng2-bootstrap';
+import { CollapseModule, Ng2BootstrapModule, ModalModule  } from 'ng2-bootstrap/ng2-bootstrap';
 
 import { SideNavComponent } from './SideNav/sideNav.component';
 import { MenuBarComponent  } from './MenuBar/menuBar.component';
@@ -50,7 +50,7 @@ const APP_PROVIDERS = [
     ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES, { useHash: true }),
-    MdModule.forRoot(), CollapseModule
+    MdModule.forRoot(), CollapseModule, ModalModule,Ng2BootstrapModule 
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
