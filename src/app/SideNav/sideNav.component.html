@@ -1,6 +1,6 @@
 <div layout="column">
   <md-sidenav-layout>
-    <md-sidenav #left  [opened]="true" mode="side" layout-padding class="side container-fluid ">
+    <md-sidenav #left [opened]="true" mode="side" layout-padding class="side container-fluid ">
       <div class="jumbotron">
         <ul class="nav nav-pills nav-stacked">
           <li class="active btn-sm btn-primary btn-block sideNavItemHeader" (click)="isCollapsed = !isCollapsed">VOD</li>
@@ -8,10 +8,8 @@
         </ul>
       </div>
     </md-sidenav>
-    <md-content layout-padding>
-      <menuBar (change)="left.toggle()"></menuBar>
-      <centerGrid></centerGrid>
-      <router-outlet></router-outlet>
-    </md-content>
+    <menuBar (change)="left.toggle()"></menuBar>
+    <centerGrid></centerGrid>
+    <router-outlet></router-outlet>
   </md-sidenav-layout>
 </div>
