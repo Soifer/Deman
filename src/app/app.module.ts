@@ -4,7 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
-
+import { CollapseModule, Ng2BootstrapModule  } from 'ng2-bootstrap/ng2-bootstrap';
 
 import { SideNavComponent } from './SideNav/sideNav.component';
 import { MenuBarComponent  } from './MenuBar/menuBar.component';
@@ -26,7 +26,7 @@ import { NoContent } from './no-content';
 
 // Import diretives
 import { XLarge } from './home/x-large';
-
+import { MdIconRegistry }                       from '@angular2-material/icon';
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
@@ -50,11 +50,11 @@ const APP_PROVIDERS = [
     ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES, { useHash: true }),
-    MdModule.forRoot()
+    MdModule.forRoot(), CollapseModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
-    APP_PROVIDERS
+    APP_PROVIDERS, MdIconRegistry
   ]
 })
 export class AppModule {

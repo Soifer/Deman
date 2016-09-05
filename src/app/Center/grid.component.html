@@ -3,13 +3,13 @@
     <img md-list-avatar [src]="item.Url" alt="random cat">
     <p md-line class="text-default">{{item.Name}}</p>
     <md-divider></md-divider>
-    <md-content class="md-padding" layout="row" layout-wrap layout-align="center start">
+    <div class="md-padding" layout="row" layout-wrap layout-align="center start">
       <div>
         <div [collapse]="item.isCollapsed" class="panel-collapse">
           <expandedItem [item]='item' style="width:1400px;"></expandedItem>
         </div>
       </div>
-    </md-content>
+    </div>
   </md-list-item>
 </md-list>-->
 <div class="card-container">
