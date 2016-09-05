@@ -42,7 +42,7 @@ import { MdTooltipModule }                    from '@angular2-material/tooltip';
         MdSlideToggleModule,
         MdTabsModule,
         MdToolbarModule,
-        MdTooltipModule
+        MdTooltipModule,
     ]
 })
 

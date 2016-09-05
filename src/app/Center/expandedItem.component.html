@@ -1,6 +1,6 @@
 <md-card class="md-warn" style="width:inherit;border-radius: 13px;z-index:100">
   <md-card-title>
-    <md-card-title-text>
+    <div>
       <span class="md-headline">Card with image</span>
       <span class="md-subhead">{{item.Name}}</span>
       <button class="btn btn-success">{{item.Name}}</button>
@@ -8,10 +8,10 @@
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
         <strong>{{item.Name}}!</strong> {{item.Text}}
       </div>
-    </md-card-title-text>
-    <md-card-title-media>
+    </div>
+    <div>
       <img class="card-media md-media-lg" [src]="item.Url">
-    </md-card-title-media>
+    </div>
   </md-card-title>
   <md-card-content>
     <form [formGroup]="registerForm">

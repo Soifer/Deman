@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { CollapseDirective } from 'ng2-bootstrap/ng2-bootstrap';
+
 
 @Component({
   selector: 'centerGrid',
   templateUrl: 'grid.component.html',
   styles: ['md-card{border:1px solid red;}'],
-  directives: [CollapseDirective]
+
 
 })
 export class GridComponent implements OnInit {

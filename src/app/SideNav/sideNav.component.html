@@ -7,7 +7,7 @@
         </md-toolbar-row>
       </md-toolbar>
       <label class="btn btn-primary" (click)="isCollapsed = !isCollapsed" btnCheckbox>Vod</label >
-            <div [collapse]="isCollapsed" class="panel-collapse">
+            <div  class="panel-collapse">
                 <table class="table table-striped table-hover">
                   <tr *ngFor="let item of items" >
                     <td><md-icon md-list-avatar class="col-md-3">launch</md-icon></td>
@@ -17,9 +17,8 @@
                 </table>
                 <div class="well well-lg">Feed</div>
             </div>
-            <button md-fab #mybutton (click)="left.close()"><md-icon class="md-24" color="warn">close</md-icon></button>
+            <button md-fab #mybutton (click)="left.close()"></button>
         </md-sidenav>
-        <md-content layout-padding>
      <menuBar></menuBar>
    <centerGrid></centerGrid>
    <router-outlet></router-outlet>
@@ -28,6 +27,5 @@
               <div *ngIf="left.opened"><span class="glyphicon glyphicon-chevron-left"></span> Hide left bar</div>
                <div *ngIf="!left.opened"><span class="glyphicon glyphicon-chevron-right"></span> Show left bar</div>
             </button>
-        </md-content>
     </md-sidenav-layout>
 </div>
