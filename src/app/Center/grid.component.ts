@@ -4,7 +4,10 @@ import { CollapseDirective } from 'ng2-bootstrap/ng2-bootstrap';
 @Component({
   selector: 'centerGrid',
   templateUrl: 'grid.component.html',
-  styles: ['md-card{border:1px solid red;}'],
+  styles: [`md-card{border:1px solid red;width:400px;}
+            .card-container{
+                            display: flex;
+                            flex-flow: row wrap;}`],
   directives: [CollapseDirective]
 
 })
@@ -14,6 +17,14 @@ export class GridComponent implements OnInit {
     { 'Id': '2', 'Name': 'Two One', 'Url': 'http://loremflickr.com/320/240', 'isCollapsed': true, 'Text': 'Lorem ipsum dolor sit amet, consectetur.' },
     { 'Id': '3', 'Name': 'Three One', 'Url': 'http://loremflickr.com/320/240', 'isCollapsed': true, 'Text': '123' },
     { 'Id': '4', 'Name': 'Four One', 'Url': 'http://loremflickr.com/320/240', 'isCollapsed': true, 'Text': 'asdfsadf' },
+    { 'Id': '5', 'Name': 'Five One', 'Url': 'http://loremflickr.com/320/240', 'isCollapsed': true, 'Text': 'adsfasdf' }
+    ,
+    { 'Id': '5', 'Name': 'Five One', 'Url': 'http://loremflickr.com/320/240', 'isCollapsed': true, 'Text': 'adsfasdf' }
+    ,
+    { 'Id': '5', 'Name': 'Five One', 'Url': 'http://loremflickr.com/320/240', 'isCollapsed': true, 'Text': 'adsfasdf' }
+    ,
+    { 'Id': '5', 'Name': 'Five One', 'Url': 'http://loremflickr.com/320/240', 'isCollapsed': true, 'Text': 'adsfasdf' }
+    ,
     { 'Id': '5', 'Name': 'Five One', 'Url': 'http://loremflickr.com/320/240', 'isCollapsed': true, 'Text': 'adsfasdf' }
   ];
   constructor() { }
