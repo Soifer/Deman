@@ -58,3 +58,6 @@ height:1000px;
   height: inherit;
 }
 
+.md-input-wrapper{
+  line-height: 2em;
+}

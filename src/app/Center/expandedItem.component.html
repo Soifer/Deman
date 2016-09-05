@@ -1,62 +1,32 @@
-<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" (click)="lgModal.hide()" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h4 class="modal-title">Large modal</h4>
-      </div>
-      <div class="modal-body">
-        <md-card class="md-warn" style="width:inherit;border-radius: 13px;z-index:100">
-          <md-card-title>
-            <div>
-              <span class="md-headline">Card with image</span>
-              <span class="md-subhead">{{item?.Name}}</span>
-              <button class="btn btn-success">{{item?.Name}}</button>
-              <div class="alert alert-success">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                <strong>{{item?.Name}}!</strong> {{item?.Text}}
-              </div>
-            </div>
-            <div>
-              <img class="card-media md-media-lg" [src]="item?.Url">
-            </div>
-          </md-card-title>
-          <md-card-content>
-            <form [formGroup]="registerForm">
-              <label>Firstname:</label>
-              <md-input type="text" formControlName="firstname"></md-input>
-              <p *ngIf="registerForm.controls.firstname.errors">This field is required!</p>
-              <label>Lastname:</label>
-              <md-input type="text" formControlName="lastname" autofocus></md-input>
+<div class="extendedItemContainer"  (click)="clearItem($event)">
+  <md-card (click)="stopPropagation($event)" class="md-warn" style="border-radius: 13px;z-index:100">
+    <md-card-title>
+     
+      {{item.Name}}
+    <img  style="float:right;" [src]="item?.Url">
+    </md-card-title>
+    <md-card-content>
+      
+      <form [formGroup]="registerForm">
+        <md-input type="text" placeholder="firstname" formControlName="firstname"></md-input>
+        <p *ngIf="registerForm.controls.firstname.errors">This field is required!</p>
+        <md-input type="text" placeholder="lastname" formControlName="lastname" autofocus></md-input>
 
-              <fieldset formGroupName="address">
-                <span class="label label-default">Street:</span>
+        <fieldset formGroupName="address">
+          <md-input type="text" placeholder="street" formControlName="street"></md-input>
+          <md-input type="text" placeholder="zip" formControlName="zip" disabled>99999</md-input>
+          <md-input type="text" placeholder="city" formControlName="city"></md-input>
+        </fieldset>
 
-                <md-input type="text" formControlName="street"></md-input>
-
-                <span class="label label-default">Zip:</span>
-                <md-input type="text" formControlName="zip" disabled>99999</md-input>
-
-                <span class="label label-default">City:</span>
-                <md-input type="text" formControlName="city"></md-input>
-              </fieldset>
-              <md-input placeholder="Character count (100 max)" maxLength="100" class="demo-full-width" value="Hello world. How are you?"
-                #characterCountHintExample>
-                <md-hint align="end">{{characterCountHintExample.characterCount}} / 100</md-hint>
-              </md-input>
-              <button md-raised-button [disableRipple]="true" type="submit" color="warn">Submit</button>
-            </form>
-          </md-card-content>
-          <md-card-actions layout="row" layout-align="end center">
-            <button md-fab color="accent" [disableRipple]="true"><md-icon class="md-24">check_circle</md-icon></button>
-            <button md-fab color="warn" [disableRipple]="true"><md-icon class="md-24">visibility</md-icon></button>
-          </md-card-actions>
-        </md-card>
-      </div>
-    </div>
-  </div>
+        <md-input placeholder="Character count (100 max)" maxLength="100"  value="Hello world. How are you?" #characterCountHintExample>
+        <md-hint  align="end">{{characterCountHintExample.characterCount}} / 100</md-hint>  
+        </md-input>
+        <button md-raised-button [disableRipple]="true" type="submit" color="warn">Submit</button>
+      </form>
+    </md-card-content>
+    <md-card-actions layout="row" layout-align="end center">
+      <button md-fab color="accent" [disableRipple]="true"><md-icon class="md-24">check_circle</md-icon></button>
+      <button md-fab color="warn" [disableRipple]="true"><md-icon class="md-24">visibility</md-icon></button>
+    </md-card-actions>
+  </md-card>
 </div>
-
-<button (click)="openModal.show()" class="btn btn-primary" >Large modal</button>

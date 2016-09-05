@@ -17,9 +17,10 @@
     <md-card-header>
       <img md-card-avatar [src]="item.Url">
       <md-card-title>{{item.Name}}</md-card-title>
-      <md-card-subtitle>{{item.Text}}</md-card-subtitle>
-   </md-card-header>
+      <md-card-subtitle>{{item.Text }}</md-card-subtitle>
+    </md-card-header>
   </md-card>
-</div>
-<expandedItem [item]="selectedItem" ></expandedItem>
 
+  <expandedItem (change)="clearItem()" *ngIf="selectedItem" style="position:fixed; width:100%; height:100%;" [item]="selectedItem"></expandedItem>
+
+</div>
