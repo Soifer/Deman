@@ -25,9 +25,9 @@ export class ExpandedCardComponent implements OnInit {
     registerForm: FormGroup;
 
     constructor(private formBuilder: FormBuilder) { }
-    @Output() change = new EventEmitter();
+    @Output() change1 = new EventEmitter();
     clearItem() {
-        this.change.emit();
+        this.change1.emit(this.item);
     }
    stopPropagation(event)
    {

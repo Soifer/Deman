@@ -13,7 +13,7 @@ import { AppState } from './app.service';
   selector: 'app',
   encapsulation: ViewEncapsulation.None,
   styleUrls: [
-    './app.style.css'
+    '../assets/css/styles.css'
   ],
   template: `
   <div class="container overall">

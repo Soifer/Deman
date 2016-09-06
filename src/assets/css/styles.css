@@ -34,7 +34,8 @@ footer{
 }
 
 md-sidenav-layout{
-height:1000px;
+height:100%;
+min-height: 800px;
 }
 /** remove when fixed in angular2-material **/
 /** The overlay-container is an invisible element which contains all individual overlays. */
