@@ -9,7 +9,7 @@ import { CollapseModule, Ng2BootstrapModule, ModalModule  } from 'ng2-bootstrap/
 import { SideNavComponent } from './SideNav/sideNav.component';
 import { MenuBarComponent  } from './MenuBar/menuBar.component';
 import { GridComponent } from './Center/grid.component';
-import { ExpandedCardComponent } from './Center/expandedItem.component';
+import { ExpandedCardComponent } from './ExpandedItem/expandedItem.component';
 /*
  * Platform and Environment providers/directives/pipes
  */

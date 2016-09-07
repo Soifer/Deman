@@ -7,6 +7,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
         .extendedItemContainer {
              background-color: rgba(245,245,245,0.9);
              height:100%;
+             min-height:1200px;
+             
             }
               .extendedItemContainer > md-card {
                width:800px;
@@ -25,9 +27,9 @@ export class ExpandedCardComponent implements OnInit {
     registerForm: FormGroup;
 
     constructor(private formBuilder: FormBuilder) { }
-    @Output() change1 = new EventEmitter();
-    clearItem() {
-        this.change1.emit(this.item);
+    @Output() closeElement = new EventEmitter();
+    clearItem(event) {
+        this.closeElement.emit(event);
     }
    stopPropagation(event)
    {

@@ -1,21 +1,22 @@
-<div layout="column">
-  <md-sidenav-layout>
-    <md-sidenav #left [opened]="true" mode="side" layout-padding class="side container-fluid ">
-      <div class="navPilsContainer">
-        <ul class="nav nav-pills nav-stacked">
-          <li class="active btn-sm btn-primary btn-block sideNavItemHeader" (click)="isCollapsed = !isCollapsed">VOD</li>
-          <li [collapse]="isCollapsed" class="panel-collapse" *ngFor="let item of items"><a [routerLink]=" ['./detail']"> {{ item }} </a></li>
-        </ul>
-      </div>
-            <div>
-        <ul class="nav nav-pills nav-stacked">
-          <li class="active btn-sm btn-primary btn-block sideNavItemHeader" (click)="isCollapsed = !isCollapsed">NOT VOD</li>
-          <li [collapse]="isCollapsed" class="panel-collapse" *ngFor="let item of items"><a [routerLink]=" ['./detail']"> {{ item }} </a></li>
-        </ul>
-      </div>
-    </md-sidenav>
-    <menuBar (change)="left.toggle()"></menuBar>
-    <centerGrid></centerGrid>
-    <router-outlet></router-outlet>
-  </md-sidenav-layout>
+<div class="sidenav">
+  <div class="navPilsContainer">
+    <ul class="nav nav-pills nav-stacked">
+      <li class="sideNavItemHeader" (click)="isCollapsed = !isCollapsed">
+        <blockquote>
+          <p>VOD</p>
+        </blockquote>
+      </li>
+      <li [collapse]="isCollapsed" class="panel-collapse" *ngFor="let item of items"><a [routerLink]=" ['./detail']"> {{ item }} </a></li>
+    </ul>
+  </div>
+  <div>
+    <ul class="nav nav-pills nav-stacked">
+      <li class="sideNavItemHeader" (click)="isCollapsed = !isCollapsed">
+         <blockquote>
+          <p>Not VOD</p>
+        </blockquote>
+      </li>
+      <li [collapse]="isCollapsed" class="panel-collapse" *ngFor="let item of items"><a [routerLink]=" ['./detail']"> {{ item }} </a></li>
+    </ul>
+  </div>
 </div>

@@ -1,0 +1,10 @@
+
+<div class=" overall">
+    <sideNav></sideNav>
+    <div  style="width:85%; float:right;" id="centerView" >
+        <menuBar></menuBar>
+        <centerGrid></centerGrid>
+        <router-outlet></router-outlet>
+    </div>
+    <expandedItem *ngIf="selectedItem" style="position:fixed; width:100%;  height:100%;" [item]="selectedItem"></expandedItem>
+</div>

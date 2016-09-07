@@ -1,0 +1,22 @@
+md-card{ min-width:150px; width:254px;height:100px;}
+.card-container{
+       display: flex;
+       flex-flow: row wrap;   
+       top:65px;
+       position:absolute;                  
+       }
+.card-container > md-card{
+    margin: 10px;  
+    border: 0 1px 1px 0;   
+    font-family: 'Roboto', sans-serif;                 
+ }
+.card-container > md-card  md-card-subtitle{
+  display:inline-block;
+  width:152px;
+  white-space: nowrap;
+  overflow:hidden !important;
+  text-overflow: ellipsis;
+ }
+ .customCard {
+    box-shadow: 2px 2px 1px -1px rgba(233, 30, 99, 1), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+}
