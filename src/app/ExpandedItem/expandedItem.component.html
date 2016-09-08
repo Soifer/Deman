@@ -1,16 +1,15 @@
 <div class="extendedItemContainer"  (click)="clearItem($event)">
   <md-card (click)="stopPropagation($event)" class="md-warn" style="border-radius: 13px;z-index:100">
     <md-card-title>
-     
-      {{item.Name}}
-    <img  style="float:right;" [src]="item?.Url">
+      {{item?.Title}}
+    <img  style="float:right;" [src]="item?.MainImg">
     </md-card-title>
     <md-card-content>
-      
+
       <form [formGroup]="registerForm">
-        <md-input type="text" placeholder="firstname" formControlName="firstname"></md-input>
-        <p *ngIf="registerForm.controls.firstname.errors">This field is required!</p>
-        <md-input type="text" placeholder="lastname" formControlName="lastname" autofocus></md-input>
+        <md-input type="text" placeholder="firstname" formControlName="title"></md-input>
+        <p *ngIf="registerForm.controls.title.errors">This field is required!</p>
+        <md-input type="text" placeholder="lastname" formControlName="comments" autofocus></md-input>
 
         <fieldset formGroupName="address">
           <md-input type="text" placeholder="street" formControlName="street"></md-input>
@@ -19,7 +18,7 @@
         </fieldset>
 
         <md-input placeholder="Character count (100 max)" maxLength="100"  value="Hello world. How are you?" #characterCountHintExample>
-        <md-hint  align="end">{{characterCountHintExample.characterCount}} / 100</md-hint>  
+        <md-hint  align="end">{{characterCountHintExample.characterCount}} / 100</md-hint>
         </md-input>
         <button md-raised-button [disableRipple]="true" type="submit" color="warn">Submit</button>
       </form>

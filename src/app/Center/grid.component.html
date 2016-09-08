@@ -1,16 +1,19 @@
-
 <div class="card-container">
-  <md-card *ngFor="let item of items" (click)="onClick(item);">
+  <md-card *ngFor="let item of items" (dblclick)="onClick(item);" [class.customCard]="item.Changed" [class.notVisible]="item.Visible">
     <md-card-header>
-      <img md-card-avatar [src]="item.Url">
-      <md-card-title>{{item.Name}}</md-card-title>      
-      <md-card-subtitle>{{item.Text }}</md-card-subtitle>
+      <img md-card-avatar [src]="item.AvatarImg">
+      <md-card-title>{{item.Title}}</md-card-title>
+      <md-card-subtitle>{{item.Comments }}</md-card-subtitle>
     </md-card-header>
-      <md-card-actions>
-      <i class="material-icons">delete</i>
-      <i class="material-icons">save</i>
-   </md-card-actions>
+    <md-card-actions>
+      <button md-icon-button (click)="item.Visible=!item.Visible" >
+        <i class="material-icons" *ngIf="item.Visible">visibility_off</i>
+        <i class="material-icons" *ngIf="!item.Visible">visibility</i>
+      </button>
+      <button md-icon-button [disabled]="!item?.Changed" *ngIf="!item?.Visible" (click)="item.Changed=!item.Changed">
+        <md-icon>save</md-icon>
+      </button>
+    </md-card-actions>
   </md-card>
-    <!--<expandedItem (closeElement)="clearItem($event)" *ngIf="selectedItem" style="position:fixed; width:100%;  height:100%;" [item]="selectedItem"></expandedItem>-->
+  <expandedItem (closeElement)="clearItem($event)" *ngIf="selectedItem" style="position:fixed; width:100%;  height:100%;" [item]="selectedItem"></expandedItem>
 </div>
-

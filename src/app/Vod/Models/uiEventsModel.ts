@@ -1,5 +1,4 @@
 export class UiEventsModel {
-    public Id: number;
-    public Visible: boolean = false;
-    public Changed: boolean = false;
+  public Visible: boolean = true;
+  public Changed: boolean = true;
 }

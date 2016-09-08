@@ -4,12 +4,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
-import { CollapseModule, Ng2BootstrapModule, ModalModule  } from 'ng2-bootstrap/ng2-bootstrap';
+import { CollapseModule, Ng2BootstrapModule, ModalModule } from 'ng2-bootstrap/ng2-bootstrap';
 
 import { SideNavComponent } from './SideNav/sideNav.component';
-import { MenuBarComponent  } from './MenuBar/menuBar.component';
+import { MenuBarComponent } from './MenuBar/menuBar.component';
 import { GridComponent } from './Center/grid.component';
 import { ExpandedCardComponent } from './ExpandedItem/expandedItem.component';
+import { GenreService } from './Vod/Services/genre.service';
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -26,7 +27,7 @@ import { NoContent } from './no-content';
 
 // Import diretives
 import { XLarge } from './home/x-large';
-import { MdIconRegistry }                       from '@angular2-material/icon';
+import { MdIconRegistry } from '@angular2-material/icon';
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
@@ -37,7 +38,7 @@ const APP_PROVIDERS = [
  * `AppModule` is the main entry point into Angular2's bootstraping process
  */
 @NgModule({
-  bootstrap: [ App ],
+  bootstrap: [App],
   declarations: [
     App,
     About,
@@ -50,15 +51,15 @@ const APP_PROVIDERS = [
     ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES, { useHash: true }),
-    MdModule.forRoot(), CollapseModule, ModalModule,Ng2BootstrapModule 
+    MdModule.forRoot(), CollapseModule, ModalModule, Ng2BootstrapModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
-    APP_PROVIDERS, MdIconRegistry
+    APP_PROVIDERS, MdIconRegistry, GenreService
   ]
 })
 export class AppModule {
-  constructor(public appRef: ApplicationRef, public appState: AppState) {}
+  constructor(public appRef: ApplicationRef, public appState: AppState) { }
   hmrOnInit(store) {
     if (!store || !store.state) return;
     console.log('HMR store', store);

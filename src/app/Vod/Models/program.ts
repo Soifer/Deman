@@ -1,7 +1,14 @@
-import {UiEventsModel} from './uiEventsModel';
+import { UiEventsModel } from './uiEventsModel';
 
 export class Program extends UiEventsModel {
-   constructor(data: Program) {
+  Name: string;
+  Status: number;
+  MediaStockImageID: number;
+  ShowInDevices: number;
+  GenreID: number;
+  FileExtensionID: number;
+  TVSerieSort: number;
+  constructor(data: Program) {
     super();
     this.Id = data.Id;
     this.Name = data.Name;
@@ -11,12 +18,5 @@ export class Program extends UiEventsModel {
     this.GenreID = data.GenreID;
     this.FileExtensionID = data.FileExtensionID;
     this.TVSerieSort = data.TVSerieSort;
-    }
-    Name: string;
-    Status: number;
-    MediaStockImageID: number;
-    ShowInDevices: number;
-    GenreID: number;
-    FileExtensionID: number;
-    TVSerieSort: number;
+  }
 }
