@@ -20,12 +20,14 @@ import { AppState } from './app.service';
 export class App {
   angularclassLogo = 'assets/img/angularclass-avatar.png';
   loading = false;
+  isCollapsed = true;
   name = 'Angular 2 Webpack Starter';
   url = 'https://twitter.com/AngularClass';
   constructor(
     public appState: AppState) {
 
   }
+
   ngOnInit() {
     console.log('Initial App State', this.appState.state);
   }

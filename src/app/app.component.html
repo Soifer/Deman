@@ -1,8 +1,7 @@
-
 <div class=" overall">
-    <sideNav></sideNav>
-    <div  style="width:85%; float:right;" id="centerView" >
-        <menuBar></menuBar>
+    <sideNav [isCollapsed]="isCollapsed"></sideNav>
+    <div style="width:90%; float:right;" id="centerView">
+        <menuBar (toggleSideNav)="isCollapsed=!isCollapsed;"></menuBar>
         <centerGrid></centerGrid>
         <router-outlet></router-outlet>
     </div>
