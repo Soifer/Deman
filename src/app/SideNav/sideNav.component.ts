@@ -7,11 +7,11 @@ import { Component, ViewEncapsulation,OnInit, Output, Input, EventEmitter } from
     styleUrls:['sideNav.css'],
 
 })
-export class SideNavComponent implements OnInit {
-    public isCollapsed: boolean = false;
+export class SideNavComponent {
+    @Input() isCollapsed : boolean;
+    isListCollapsed = true;
     @Output() modalItemSelected = new EventEmitter();
     items = ['Genre', 'Program', 'Season', 'Episode', 'Feed'];
     constructor() { }
-    ngOnInit() { }
 
 }

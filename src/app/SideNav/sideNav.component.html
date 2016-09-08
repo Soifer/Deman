@@ -1,22 +1,22 @@
-<div class="sidenav">
+<div class="sidenav" [class.sideNavCollapsed]='isCollapsed' [class.sideNavExpanded]='!isCollapsed'>
   <div class="navPilsContainer">
-    <ul class=" ">
-      <li class="sideNavItemHeader" (click)="isCollapsed = !isCollapsed">
+    <ul class="nav nav-pills nav-stacked">
+      <li class="sideNavItemHeader" (click)="isListCollapsed = !isListCollapsed">
         <blockquote>
           <p>VOD</p>
         </blockquote>
       </li>
-      <li [collapse]="isCollapsed" class="panel-collapse" *ngFor="let item of items"><a [routerLink]=" ['./detail']"> {{ item }} </a></li>
+      <li [collapse]="isListCollapsed" class="panel-collapse" *ngFor="let item of items"><a [routerLink]=" ['./detail']"> {{ item }} </a></li>
     </ul>
   </div>
   <div>
     <ul class="nav nav-pills nav-stacked">
-      <li class="sideNavItemHeader" (click)="isCollapsed = !isCollapsed">
-         <blockquote>
+      <li class="sideNavItemHeader" (click)="isListCollapsed = !isListCollapsed">
+        <blockquote>
           <p>Not VOD</p>
         </blockquote>
       </li>
-      <li [collapse]="isCollapsed" class="panel-collapse" *ngFor="let item of items"><a [routerLink]=" ['./detail']"> {{ item }} </a></li>
+      <li [collapse]="isListCollapsed" class="panel-collapse" *ngFor="let item of items"><a [routerLink]=" ['./detail']"> {{ item }} </a></li>
     </ul>
   </div>
 </div>

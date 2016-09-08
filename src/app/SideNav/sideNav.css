@@ -1,9 +1,9 @@
 /* The side navigation menu */
 .sidenav {
-    height: 100%; /* 100% Full-height */
-    width: 15%;  /* 0 width - change this with JavaScript */
+    height: 100%; /* 100% Full-height */  
     position: fixed; /* Stay in place */
     z-index: 1; /* Stay on top */
+    width:0px;
     top: 0;
     left: 0;
     background-color:#414143;
@@ -13,7 +13,13 @@
     padding-top: 60px; /* Place content 60px from the top */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
 }
+.sideNavCollapsed{
+    width: 0;
+}
 
+.sideNavExpanded{
+    width: 10%;  /* 0 width - change this with JavaScript */
+}
 /* The navigation menu links */
 .sidenav a {
     padding: 8px 8px 0 32px;
@@ -26,7 +32,7 @@
 }
 
 /* When you mouse over the navigation links, change their color */
-.sidenav a:hover, .offcanvas a:focus, .offcanvas a:active {
+.sidenav a:hover, .nav-pills a:focus, .nav-pills a:active {
     background-color: #414143 !important;
     color: #E91E63;
 }

@@ -6,13 +6,15 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
     styleUrls: ['menuBar.css']
 })
 export class MenuBarComponent implements OnInit {
-    @Output() change = new EventEmitter();
+    @Output() toggleSideNav = new EventEmitter();
     menubarIsCollapsed: boolean = false;
     constructor() {
      }
     onClick() {
         this.menubarIsCollapsed = !this.menubarIsCollapsed;
-        this.change.emit();
+        console.log("menubar");
+        
+        this.toggleSideNav.emit();
     }
     ngOnInit() { }
 }
