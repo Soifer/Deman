@@ -67,7 +67,13 @@ min-height: 800px;
 .md-input-wrapper{
   line-height: 2em;
 }
-#centerView{
-  width:85%;
+#centerView{ 
   float:right;
+  transition: 0.5s;
+}
+.centerView90{
+  width:90%;
+}
+.centerView100{
+  width:100%;
 }

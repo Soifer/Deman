@@ -1,7 +1,7 @@
 <div class=" overall">
     <sideNav [isCollapsed]="isCollapsed"></sideNav>
-    <div style="width:90%; float:right;" id="centerView">
-        <menuBar (toggleSideNav)="isCollapsed=!isCollapsed;"></menuBar>
+    <div [class.centerView90] = '!isCollapsed' [class.centerView100] = 'isCollapsed' id="centerView">
+        <menuBar (toggleSideNav)="isCollapsed=!isCollapsed; "></menuBar>
         <centerGrid></centerGrid>
         <router-outlet></router-outlet>
     </div>

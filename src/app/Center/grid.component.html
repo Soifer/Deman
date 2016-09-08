@@ -1,5 +1,5 @@
 <div class="card-container">
-  <md-card *ngFor="let item of items" (dblclick)="onClick(item);" [class.customCard]="item.Changed" [class.notVisible]="item.Visible">
+  <md-card *ngFor="let item of items" (dblclick)="onClick(item);" [class.changedCard]="item.Changed" [class.notVisible]="item.Visible">
     <md-card-header>
       <img md-card-avatar [src]="item.AvatarImg">
       <md-card-title>{{item.Title}}</md-card-title>

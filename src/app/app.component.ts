@@ -1,7 +1,7 @@
 /*
  * Angular 2 decorators and services
  */
-import { Component, ViewEncapsulation} from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 import { AppState } from './app.service';
 
@@ -25,9 +25,8 @@ export class App {
   url = 'https://twitter.com/AngularClass';
   constructor(
     public appState: AppState) {
-
   }
-
+  
   ngOnInit() {
     console.log('Initial App State', this.appState.state);
   }
