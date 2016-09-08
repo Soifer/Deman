@@ -6,7 +6,7 @@ import { GenreService } from '../Vod/Services/genre.service';
 @Component({
   selector: 'centerGrid',
   templateUrl: 'grid.component.html',
-  styleUrls: ['grid.css'],
+  styleUrls: ['grid.component.css'],
 })
 export class GridComponent implements OnInit, OnDestroy {
   items: Genre[];
