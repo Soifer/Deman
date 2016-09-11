@@ -1,17 +1,26 @@
 <div class="card-container">
-  <md-card *ngFor="let item of items" (dblclick)="onClick(item);" [class.changedCard]="item.Changed" [class.notVisible]="item.Visible">
+  <md-card *ngFor="let item of items" (mouseenter)='over(item)' (mouseleave)='over(item)' (dblclick)="onClick(item);" [class.changedCard]="item.Changed"
+    [class.notVisible]="item.Visible">
     <md-card-header>
-      <img md-card-avatar [src]="item.AvatarImg">
-      <md-card-title>{{item.Title}}</md-card-title>
+      <img md-card-avatar [src]="item.Thumb.GetImages.Thumbnail_109_59">
+      <md-card-title >
+       <span (dblclick)="setTitleFieldToEditable(item, $event);" *ngIf="!item.EditField">{{item.Title}}</span> 
+       <div (dblclick)="stopPropagation($event)"  *ngIf="item.EditField">
+        <md-input  (onchange)="onInputChanged($event)" type="text" [(ngModel)]='item.Title' >
+          <span  *ngIf="item.Changed" md-suffix><i style="color:#757575;" class="material-icons" >done</i></span>
+         </md-input> 
+      
+       </div>
+      </md-card-title>
       <md-card-subtitle>{{item.Comments }}</md-card-subtitle>
     </md-card-header>
     <md-card-actions>
-      <button md-icon-button (click)="item.Visible=!item.Visible" >
-        <i class="material-icons" *ngIf="item.Visible">visibility_off</i>
-        <i class="material-icons" *ngIf="!item.Visible">visibility</i>
+      <button md-icon-button *ngIf="item?.Changed" (click)="item.Changed=true">
+         <i class="material-icons pink100" >save</i>
       </button>
-      <button md-icon-button [disabled]="!item?.Changed" *ngIf="!item?.Visible" (click)="item.Changed=!item.Changed">
-        <md-icon>save</md-icon>
+      <button md-icon-button [class.eyeVisible]="item.MouseOver" [class.eyeNone]="!item.MouseOver" (click)="item.Visible=!item.Visible; item.Changed=!item.Changed">
+        <i style="color:#BDBDBD;" class="material-icons" *ngIf="item.Visible">visibility_off</i>
+        <i  style="color:#757575;" class="material-icons" *ngIf="!item.Visible">visibility</i>
       </button>
     </md-card-actions>
   </md-card>
