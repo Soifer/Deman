@@ -1,6 +1,7 @@
 import { UiEventsModel } from './uiEventsModel';
 
 export class Episode extends UiEventsModel {
+  Id: number;
   SeasonId: number;
   Title: string;
   SubTitle: string;

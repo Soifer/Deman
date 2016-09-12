@@ -1,0 +1,9 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+      // Configures if the built-in HTML language support suggests Angular V1 tags and properties.
+    "html.suggest.angular1": false,
+
+    // Configures if the built-in HTML language support suggests Ionic tags, properties and values.
+    "html.suggest.ionic": false
+
+}
