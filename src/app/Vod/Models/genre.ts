@@ -1,5 +1,7 @@
 import { UiEventsModel } from './uiEventsModel';
 import { Thumbnail, ImageTypes } from './thumbnail';
+import { IGridCommon } from './IGridCommon';
+
 export class Genre extends UiEventsModel implements IGridCommon {
   Title: string;
   Comments: string;

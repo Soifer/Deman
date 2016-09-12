@@ -1,19 +1,40 @@
 import { UiEventsModel } from './uiEventsModel';
+import { Thumbnail, ImageTypes } from './thumbnail';
+import { Season } from './season';
+import { IGridCommon } from './IGridCommon';
 
-export class Episode extends UiEventsModel {
+export class Episode extends UiEventsModel implements IGridCommon {
   Id: number;
-  SeasonId: number;
-  Title: string;
+  Parent: Season;
+  Thumb: Thumbnail;
+  DisplayOrder: number;
+  ProgramId: number;
   SubTitle: string;
+  Title: string;
   VideoId: number;
-  constructor(data: Episode) {
+  ArticleId: number;
+
+
+  constructor(data) {
     super();
     this.Id = data.Id;
-    this.SeasonId = data.SeasonId;
-    this.Title = data.Title;
+    this.Parent = new Season(data.Season);
+    this.Thumb = new Thumbnail(data.Thumb);
+    this.DisplayOrder = data.DisplayOrder;
+    this.Visible = data.isVisible;
+    this.ProgramId = data.ProgramId;
     this.SubTitle = data.SubTitle;
+    this.Title = data.Title;
     this.VideoId = data.VideoId;
-    this.Visible = false;
-    this.Changed = false;
+    this.ArticleId = data.ArticleId;
+  }
+  public get AvatarImg(): string {
+    return this.Thumb.Images[ImageTypes[ImageTypes.Avatar]];
+  }
+  public get Comments(): string {
+    return this.SubTitle;
+  }
+  public set Comments(value: string) {
+    this.SubTitle = value;
   }
 }

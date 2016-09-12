@@ -16,7 +16,7 @@ export class EpisodeService implements IService<Episode> {
 
   getAll(): Observable<Episode[]> {
     return this
-      ._dal.GetItemsByUri('http://localhost/Nana10MVC/vod/genre/getall')
+      ._dal.GetItemsByUri('http://localhost/Nana10MVC/vod/genre/get')
       .map((episodes: Array<Episode>) => {
         let result: Array<Episode> = [];
         if (episodes) {

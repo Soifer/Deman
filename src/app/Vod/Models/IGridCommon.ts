@@ -1,7 +1,5 @@
-/**
- * IGridCommon
- */
-interface IGridCommon {
+
+export interface IGridCommon {
     Id: number;
     Title: string;
     Comments: string;
