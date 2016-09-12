@@ -1,11 +1,11 @@
-import { UiEventsModel } from './uiEventsModel';
-import { Program } from './program';
+import { UiEventsViewModel } from './uiViewModel';
+import { ProgramModel } from './program';
 import { ThumbnailModel, ImageTypes } from './thumbnail';
 import { IGridCommon } from './IGridCommon';
 
-export class Season extends UiEventsModel implements IGridCommon {
+export class SeasonModel extends UiEventsViewModel implements IGridCommon {
   Id: number;
-  Parent: Program;
+  Parent: ProgramModel;
   Thumb: ThumbnailModel;
   FullEpisodes: boolean;
   IsMain: boolean;
@@ -16,7 +16,7 @@ export class Season extends UiEventsModel implements IGridCommon {
   constructor(data) {
     super();
     this.Id = data.Id;
-    this.Parent = new Program(data.Program);
+    this.Parent = new ProgramModel(data.Program);
     this.Thumb = new ThumbnailModel(data.Thumb);
     this.FullEpisodes = data.FullEpisodes;
     this.IsMain = data.IsMain;

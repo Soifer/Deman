@@ -2,9 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Http } from '@angular/http';
 import { GenreService } from '../../Vod/Services/genre.service';
 import { EpisodeService } from '../../Vod/Services/episode.service';
-import { UiEventsModel } from '../../Vod/Models/uiEventsModel';
 import { GenreModel } from '../../Vod/Models/genre';
 import { IGridCommon } from '../../Vod/Models/IGridCommon';
+
 @Component({
   selector: 'grid',
   templateUrl: 'grid.component.html',

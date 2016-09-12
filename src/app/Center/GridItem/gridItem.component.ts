@@ -1,10 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Http } from '@angular/http';
-import { UiEventsModel } from '../../Vod/Models/uiEventsModel';
 import { FormControl } from '@angular/forms';
 import { GenreModel } from '../../Vod/Models/genre';
-import { Episode } from '../../Vod/Models/episode';
-import { Program } from '../../Vod/Models/program';
 
 @Component({
     selector: 'gridItem',
@@ -33,7 +30,6 @@ export class GridItemComponent implements OnInit {
 
     ngOnInit() {
         this.titleField = new FormControl(this.item.Title);
-        console.log(this.loading);
 
         this.titleField.valueChanges.subscribe(x => {
             this.item.Changed = true;

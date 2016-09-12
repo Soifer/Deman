@@ -12,8 +12,6 @@ export class MenuBarComponent implements OnInit {
      }
     onClick() {
         this.menubarIsCollapsed = !this.menubarIsCollapsed;
-        console.log("menubar");
-        
         this.toggleSideNav.emit();
     }
     ngOnInit() { }
