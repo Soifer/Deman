@@ -8,7 +8,8 @@ import { CollapseModule, Ng2BootstrapModule, ModalModule } from 'ng2-bootstrap/n
 
 import { SideNavComponent } from './SideNav/sideNav.component';
 import { MenuBarComponent } from './MenuBar/menuBar.component';
-import { GridComponent } from './Center/grid.component';
+import { GridComponent } from './Center/Grid/grid.component';
+import { GridItemComponent } from './Center/GridItem/gridItem.component';
 import { ExpandedCardComponent } from './ExpandedItem/expandedItem.component';
 import { GenreService } from './Vod/Services/genre.service';
 /*
@@ -44,7 +45,7 @@ const APP_PROVIDERS = [
     About,
     Home,
     NoContent,
-    XLarge, SideNavComponent, MenuBarComponent, GridComponent, ExpandedCardComponent
+    XLarge, SideNavComponent, MenuBarComponent, GridComponent, GridItemComponent, ExpandedCardComponent
   ],
   imports: [ // import Angular's modules
     BrowserModule,

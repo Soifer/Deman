@@ -1,54 +1,31 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Http } from '@angular/http';
-import { Genre } from '../Vod/Models/genre';
-import { GenreService } from '../Vod/Services/genre.service';
-import { UiEventsModel } from '../Vod/Models/uiEventsModel';
-import { FormControl } from '@angular/forms';
+import { GenreService } from '../../Vod/Services/genre.service';
+import { UiEventsModel } from '../../Vod/Models/uiEventsModel';
+import { Genre } from '../../Vod/Models/genre';
 
 @Component({
-  selector: 'centerGrid',
+  selector: 'grid',
   templateUrl: 'grid.component.html',
   styleUrls: ['grid.component.css'],
 })
 export class GridComponent implements OnInit, OnDestroy {
-  // items: Genre[];
-  items: any;
+  items: Genre[];
+  items2: any;
   subscriber: any;
   service: GenreService;
   selectedItem: any;
-  titleField = new FormControl();
+  isLoading: boolean = true;
 
   constructor(context: Http) {
     this.service = new GenreService(context);
   }
-  onClick(item, event) {
+  setExpandedItem(item) {
     this.selectedItem = item;
   }
-  over(data: UiEventsModel) {
-    data.MouseOver = !data.MouseOver;
-    // console.log("mouse state: " + data.MouseOver);
-
-  }
-
-  setTitleFieldToEditable(data, event) {
-    data.MouseOver = !data.MouseOver;
-    this.stopPropagation(event);
-    data.EditField = !data.EditField;
-  }
-
-  stopPropagation(event) {
-    event.stopPropagation();
-  }
-
   ngOnInit() {
-    this.titleField.valueChanges.subscribe(
-
-    );
-    this.getTestItems();
-
-  }
-  onInputChanged(event) {
-    console.log(event);
+    this.getItems();
+    //this.getTestItems();
   }
 
   clearItem(data) {
@@ -56,6 +33,7 @@ export class GridComponent implements OnInit, OnDestroy {
   }
   getItems() {
     this.subscriber = this.service.getAll().subscribe(data => {
+      this.isLoading = false;
       this.items = data;
     });
   }
@@ -63,7 +41,7 @@ export class GridComponent implements OnInit, OnDestroy {
     this.subscriber.unsubscribe();
   }
   getTestItems() {
-    this.items = [
+    this.items2 = [
       {
         "Thumb": {
           "Id": 1,

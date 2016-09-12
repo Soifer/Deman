@@ -23,7 +23,7 @@ export class GenreService implements IService<Genre> {
           });
         }
         return result;
-      })
+      }).delay(0)
       ;
   }
 }
