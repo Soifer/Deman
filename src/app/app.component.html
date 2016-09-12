@@ -2,7 +2,7 @@
     <sideNav [isCollapsed]="isCollapsed"></sideNav>
     <div [class.centerView90] = '!isCollapsed' [class.centerView100] = 'isCollapsed' id="centerView">
         <menuBar (toggleSideNav)="isCollapsed=!isCollapsed; "></menuBar>
-        <centerGrid></centerGrid>
+        <grid></grid>
         <router-outlet></router-outlet>
     </div>
     <expandedItem *ngIf="selectedItem" style="position:fixed; width:100%;  height:100%;" [item]="selectedItem"></expandedItem>

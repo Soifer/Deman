@@ -4,7 +4,7 @@ export class Genre extends UiEventsModel implements IGridCommon {
   Title: string;
   Comments: string;
   Id: number;
-  private Thumb: Thumbnail;
+  Thumb: Thumbnail;
   constructor(data) {
     super();
     this.Id = data.Id;
