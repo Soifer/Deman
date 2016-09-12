@@ -1,23 +1,19 @@
 import { UiEventsModel } from './uiEventsModel';
-
-export class Program extends UiEventsModel {
+import { Thumbnail, ImageTypes } from './thumbnail';
+import { Genre } from './genre';
+export class Program extends UiEventsModel implements IGridCommon {
+  private Parent: Genre;
   Id: number;
-  Name: string;
-  Status: number;
-  MediaStockImageID: number;
-  ShowInDevices: number;
-  GenreID: number;
-  FileExtensionID: number;
-  TVSerieSort: number;
-  constructor(data: Program) {
+  Title: string;
+  Comments: string;
+  Color: string;
+  private Thumb: Thumbnail;
+  constructor(data) {
     super();
     this.Id = data.Id;
-    this.Name = data.Name;
-    this.Status = data.Status;
-    this.MediaStockImageID = data.MediaStockImageID;
-    this.ShowInDevices = data.ShowInDevices;
-    this.GenreID = data.GenreID;
-    this.FileExtensionID = data.FileExtensionID;
-    this.TVSerieSort = data.TVSerieSort;
+    this.Thumb = new Thumbnail(data.Thumb);
+    this.Visible = data.isVisible;
+    this.Color = data.Color;
+    this.Parent = new Genre(data.Genre);
   }
 }
