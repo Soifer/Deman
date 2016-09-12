@@ -1,19 +1,19 @@
 import { UiEventsModel } from './uiEventsModel';
-import { Thumbnail, ImageTypes } from './thumbnail';
+import { ThumbnailModel, ImageTypes } from './thumbnail';
 import { IGridCommon } from './IGridCommon';
 
-export class Genre extends UiEventsModel implements IGridCommon {
+export class GenreModel extends UiEventsModel implements IGridCommon {
   Title: string;
   Comments: string;
   Id: number;
-  Thumb: Thumbnail;
+  Thumb: ThumbnailModel;
   constructor(data) {
     super();
     this.Id = data.Id;
     this.Visible = data.isVisible;
     this.Title = data.Title;
     this.Comments = data.Comments;
-    this.Thumb = new Thumbnail(data.Thumb);
+    this.Thumb = new ThumbnailModel(data.Thumb);
   }
 
   public get AvatarImg(): string {

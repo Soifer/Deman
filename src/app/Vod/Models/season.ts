@@ -1,12 +1,12 @@
 import { UiEventsModel } from './uiEventsModel';
 import { Program } from './program';
-import { Thumbnail, ImageTypes } from './thumbnail';
+import { ThumbnailModel, ImageTypes } from './thumbnail';
 import { IGridCommon } from './IGridCommon';
 
 export class Season extends UiEventsModel implements IGridCommon {
   Id: number;
   Parent: Program;
-  Thumb: Thumbnail;
+  Thumb: ThumbnailModel;
   FullEpisodes: boolean;
   IsMain: boolean;
   Promo: string;
@@ -17,7 +17,7 @@ export class Season extends UiEventsModel implements IGridCommon {
     super();
     this.Id = data.Id;
     this.Parent = new Program(data.Program);
-    this.Thumb = new Thumbnail(data.Thumb);
+    this.Thumb = new ThumbnailModel(data.Thumb);
     this.FullEpisodes = data.FullEpisodes;
     this.IsMain = data.IsMain;
     this.Promo = data.Promo;

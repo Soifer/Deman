@@ -1,6 +1,6 @@
 import { UiEventsModel } from './uiEventsModel';
-import { Thumbnail, ImageTypes } from './thumbnail';
-import { Genre } from './genre';
+import { ThumbnailModel, ImageTypes } from './thumbnail';
+import { GenreModel } from './genre';
 import { IGridCommon } from './IGridCommon';
 
 export class Program extends UiEventsModel implements IGridCommon {
@@ -8,17 +8,17 @@ export class Program extends UiEventsModel implements IGridCommon {
   Title: string;
   Color: string;
   Promo: string;
-  private Parent: Genre;
-  private Thumb: Thumbnail;
+  private Parent: GenreModel;
+  private Thumb: ThumbnailModel;
   constructor(data) {
     super();
     this.Title = data.Title;
     this.Promo = data.Promo;
     this.Id = data.Id;
-    this.Thumb = new Thumbnail(data.Thumb);
+    this.Thumb = new ThumbnailModel(data.Thumb);
     this.Visible = data.isVisible;
     this.Color = data.Color;
-    this.Parent = new Genre(data.Genre);
+    this.Parent = new GenreModel(data.Genre);
   }
   public get AvatarImg(): string {
     return this.Thumb.Images[ImageTypes[ImageTypes.Avatar]];

@@ -1,4 +1,4 @@
-export class Thumbnail {
+export class ThumbnailModel {
   Id: number;
   Comments: string;
   Created: Date;
