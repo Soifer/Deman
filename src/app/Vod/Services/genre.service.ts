@@ -12,9 +12,9 @@ export class GenreService implements IService<Genre> {
   constructor(private _http: Http) {
     this._dal = new Dal(_http);
   }
-  getAll(): Observable<Genre[]> {
+  getAll(skip: number, top: number): Observable<Genre[]> {
     return this
-      ._dal.GetItemsByUri('http://localhost/Nana10MVC/vod/genre/get')
+      ._dal.GetItemsByUri('http://localhost/Nana10MVC/vod/genre/get?%24top=' + top + '&%24skip=' + skip + '&%24orderby=Id%20desc')
       .map((genres) => {
         let result: Array<Genre> = [];
         if (genres) {

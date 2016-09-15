@@ -1,12 +1,12 @@
 
-<md-card  (mouseenter)='item.MouseOver = true;' (mouseleave)='item.MouseOver = false;' (dblclick)="onDoubleClick(item);" [class.changedCard]="item.Changed"
+<md-card  (mouseenter)='item.MouseOver = true;' (mouseleave)='item.MouseOver = false;' (dblclick)="onDoubleClick();" [class.changedCard]="item.Changed"
     [class.notVisible]="!item.Visible">
     <md-card-header>
          <span *ngIf="loading">Loading...</span>
          <img *ngIf="!loading" md-card-avatar [src]="item?.AvatarImg">
           <!--<img  md-card-avatar [src]="item.AvatarImg">-->
       <md-card-title >
-       <span (dblclick)="setTitleFieldToEditable(item, $event);" *ngIf="!item.EditField">{{item.Title}}</span> 
+       <span (dblclick)="setTitleFieldToEditable(item, $event)" (press)="setTitleFieldToEditableMobile(item)" *ngIf="!item.EditField">{{item.Title}}</span> 
        <div (dblclick)="stopPropagation($event)"  *ngIf="item.EditField">
         <md-input [formControl]="titleField"  (onchange)="onInputChanged($event)" type="text" >
           <span  *ngIf="item.Changed" md-suffix><i style="color:#757575;" class="material-icons" >done</i></span>

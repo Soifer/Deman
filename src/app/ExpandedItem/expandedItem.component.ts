@@ -4,22 +4,7 @@ import { Genre } from '../Vod/Models/genre';
 @Component({
   selector: 'expandedItem',
   templateUrl: 'expandedItem.component.html',
-  styles: [`
-        .extendedItemContainer {
-             background-color: rgba(245,245,245,0.9);
-             height:100%;
-             min-height:1200px;
-
-            }
-              .extendedItemContainer > md-card {
-               width:800px;
-               margin-left:auto;
-               margin-right:auto;
-               z-index:150;
-
-              }
-
-           `]
+  styleUrls: ['expandedItem.component.css']
 })
 
 export class ExpandedCardComponent implements OnInit {

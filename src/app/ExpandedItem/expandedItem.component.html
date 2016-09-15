@@ -1,8 +1,7 @@
-<div class="extendedItemContainer"  (click)="clearItem($event)">
-  <md-card (click)="stopPropagation($event)" class="md-warn" style="border-radius: 13px;z-index:100">
+<div class="expandedItemContainer"  (click)="clearItem($event)">
+  <md-card (click)="stopPropagation($event)" class="md-warn">
     <md-card-title>
-      {{item?.Title}}
-    <img  style="float:right;" [src]="item?.MainImg">
+    <img md-card-image  [src]="item?.MainImg">
     </md-card-title>
     <md-card-content>
 

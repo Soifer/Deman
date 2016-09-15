@@ -1,8 +1,7 @@
 <div id="navBar">
         <md-toolbar color="black">
-
-                <i *ngIf='!menubarIsCollapsed' (click)="onClick()" aria-label="left" class="material-icons menuIcon pink100" style="font-size:36px;  transition: 0.5s;">view_headline</i>
-                <i *ngIf='menubarIsCollapsed' (click)="onClick()" aria-label="left" class="material-icons menuIcon pink100" style="font-size:36px;  transition: 0.5s;">close</i>
+                <i *ngIf='!menubarIsCollapsed' (click)="onClick()" aria-label="left" class="material-icons menuIcon pink100" style="font-size:36px;">view_headline</i>
+                <i *ngIf='menubarIsCollapsed'  (click)="onClick()" aria-label="left" class="material-icons menuIcon pink100" style="font-size:36px;">close</i>
                 <md-input style="font-size:12px;" type="text" placeholder="Genre"></md-input>
                 <md-input style="font-size:12px;" type="text" placeholder="Program"></md-input>
                 <md-input type="text" style="font-size:12px;" type="text" placeholder="Season"></md-input>

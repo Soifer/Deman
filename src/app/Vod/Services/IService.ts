@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs/Rx';
 
 export interface IService<T>{
-    getAll(): Observable<T[]>
+    getAll(skip:number, top: number): Observable<T[]>
 }
