@@ -3,7 +3,8 @@ import { Http } from '@angular/http';
 import { GenreService } from '../../Vod/Services/genre.service';
 import { UiEventsModel } from '../../Vod/Models/uiEventsModel';
 import { Genre } from '../../Vod/Models/genre';
-
+import { IService } from '../../Vod/Services/IService';
+import { ProgramService } from '../../Vod/Services/program.service'
 @Component({
   selector: 'grid',
   templateUrl: 'grid.component.html',
@@ -13,17 +14,18 @@ import { Genre } from '../../Vod/Models/genre';
   }
 })
 export class GridComponent implements OnInit, OnDestroy {
-  items: Genre[]=[];
+  items: Genre[] = [];
   items2: any;
   subscriber: any;
-  service: GenreService;
+  services: any[] = [];
   selectedItem: any;
   isLoading: boolean = true;
   skip: number = 0;
   top: number = 40;
 
   constructor(context: Http) {
-    this.service = new GenreService(context);
+    this.services.push(new GenreService(context));
+    this.services.push(new ProgramService(context));
   }
 
 
@@ -36,7 +38,7 @@ export class GridComponent implements OnInit, OnDestroy {
   scrolleEvent(evt) {
     this.currPos = (window.pageYOffset || evt.target.scrollTop) - (evt.target.clientTop || 0);
     if (this.currPos >= this.changePos) {
-      this.changePos = this.currPos + 200;
+      this.changePos = this.currPos + this.increasePosition;
       this.isScrolled = true;
       console.log("current position: " + this.currPos);
       console.log("change position: " + this.changePos);
@@ -59,7 +61,7 @@ export class GridComponent implements OnInit, OnDestroy {
     this.selectedItem = null;
   }
   getItems() {
-    this.subscriber = this.service.getAll(this.skip, this.top).subscribe(data => {
+    this.subscriber = this.services[0].getAll(this.skip, this.top).subscribe(data => {
       this.isLoading = false;
       data.forEach(element => {
         this.items.push(element);
