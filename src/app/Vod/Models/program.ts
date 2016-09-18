@@ -1,23 +1,35 @@
-import { UiEventsModel } from './uiEventsModel';
+import { UiEventsViewModel } from './uiViewModel';
+import { ThumbnailModel, ImageTypes } from './thumbnail';
+import { GenreModel } from './genre';
+import { IGridCommon } from './IGridCommon';
 
-export class Program extends UiEventsModel {
+export class ProgramModel extends UiEventsViewModel implements IGridCommon {
   Id: number;
-  Name: string;
-  Status: number;
-  MediaStockImageID: number;
-  ShowInDevices: number;
-  GenreID: number;
-  FileExtensionID: number;
-  TVSerieSort: number;
-  constructor(data: Program) {
+  Title: string;
+  Color: string;
+  Promo: string;
+  private Parent: GenreModel;
+  private Thumb: ThumbnailModel;
+  constructor(data) {
     super();
+    this.Title = data.Title;
+    this.Promo = data.Promo;
     this.Id = data.Id;
-    this.Name = data.Name;
-    this.Status = data.Status;
-    this.MediaStockImageID = data.MediaStockImageID;
-    this.ShowInDevices = data.ShowInDevices;
-    this.GenreID = data.GenreID;
-    this.FileExtensionID = data.FileExtensionID;
-    this.TVSerieSort = data.TVSerieSort;
+    this.Thumb = new ThumbnailModel(data.Thumb);
+    this.Visible = data.isVisible;
+    this.Color = data.Color;
+    this.Parent = new GenreModel(data.Genre);
+  }
+  public get AvatarImg(): string {
+    return this.Thumb.Images[ImageTypes[ImageTypes.Avatar]];
+  }
+  public get Comments(): string {
+    return this.Promo;
+  }
+  public set Comments(value: string) {
+    this.Promo = value;
+  }
+    public get MainImg(): string {
+    return this.Thumb.Images[ImageTypes[ImageTypes.Standart]];
   }
 }

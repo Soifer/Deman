@@ -1,10 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter, AfterContentChecked, AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Http } from '@angular/http';
-import { UiEventsModel } from '../../Vod/Models/uiEventsModel';
 import { FormControl } from '@angular/forms';
-import { Genre } from '../../Vod/Models/genre';
 import { Observable } from 'rxjs/Rx';
-
+import { GenreModel } from '../../Vod/Models/genre';
 
 @Component({
     selector: 'gridItem',
@@ -14,9 +12,10 @@ import { Observable } from 'rxjs/Rx';
 })
 
 export class GridItemComponent implements OnInit, AfterContentChecked, AfterContentInit {
-    @Input() item: Genre;
     @Input() loading: boolean;
     @Input() isScrolled: boolean;
+    @Input() item: GenreModel;
+
     @Output() doubleClick = new EventEmitter();
     titleField: FormControl;
 

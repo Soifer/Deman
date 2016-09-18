@@ -1,12 +1,12 @@
 import { Http, Response } from '@angular/http';
-import { Episode } from '../../vod/models/episode';
+import { EpisodeModel } from '../../vod/models/episode';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { Dal } from '../../DAL/dal.service';
 import { IService } from './IService';
 
 @Injectable()
-export class EpisodeService implements IService<Episode> {
+export class EpisodeService implements IService<EpisodeModel> {
   errorMessage: string;
   _dal: Dal;
 
@@ -14,15 +14,15 @@ export class EpisodeService implements IService<Episode> {
     this._dal = new Dal(_http);
   }
 
-  getAll(): Observable<Episode[]> {
+  getAll(): Observable<EpisodeModel[]> {
     return this
-      ._dal.GetItemsByUri('http://localhost/Nana10MVC/vod/genre/getall')
-      .map((episodes: Array<Episode>) => {
-        let result: Array<Episode> = [];
+      ._dal.GetItemsByUri('http://localhost/Nana10MVC/vod/genre/get')
+      .map((episodes: Array<EpisodeModel>) => {
+        let result: Array<EpisodeModel> = [];
         if (episodes) {
-          episodes.forEach((episode: Episode) => {
+          episodes.forEach((episode: EpisodeModel) => {
             console.log(JSON.stringify(episode));
-            result.push(new Episode(episode));
+            result.push(new EpisodeModel(episode));
           });
         }
         return result;
