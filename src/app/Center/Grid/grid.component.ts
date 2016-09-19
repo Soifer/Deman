@@ -1,12 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Http } from '@angular/http';
 import { GenreService } from '../../Vod/Services/genre.service';
-import { UiEventsModel } from '../../Vod/Models/uiEventsModel';
-import { IService } from '../../Vod/Services/IService';
+import { IService } from '../../Vod/Services/iservice';
 import { ProgramService } from '../../Vod/Services/program.service'
 import { EpisodeService } from '../../Vod/Services/episode.service';
 import { GenreModel } from '../../Vod/Models/genre';
-import { IGridCommon } from '../../Vod/Models/IGridCommon';
+import { IGridVodCommon } from '../../Vod/Models/IgridCommon';
 
 @Component({
   selector: 'grid',
@@ -17,7 +16,7 @@ import { IGridCommon } from '../../Vod/Models/IGridCommon';
   }
 })
 export class GridComponent implements OnInit, OnDestroy {
-  items: GenreModel[];
+  items: IGridVodCommon[] = [];
   subscriber: any;
   services: any[] = [];
   selectedItem: any;
@@ -28,6 +27,8 @@ export class GridComponent implements OnInit, OnDestroy {
   constructor(context: Http) {
     this.services.push(new GenreService(context));
     this.services.push(new ProgramService(context));
+    console.log(this.items);
+    
   }
 
 
@@ -62,7 +63,7 @@ export class GridComponent implements OnInit, OnDestroy {
     this.selectedItem = null;
   }
   getItems() {
-    this.subscriber = this.services[0].getAll(this.skip, this.top).subscribe(data => {
+    this.subscriber = this.services[0].getAll(this.top, this.skip).subscribe(data => {
       this.isLoading = false;
       data.forEach(element => {
         this.items.push(element);

@@ -1,9 +1,9 @@
 import { UiEventsViewModel } from './uiViewModel';
 import { ThumbnailModel, ImageTypes } from './thumbnail';
 import { SeasonModel } from './season';
-import { IGridCommon } from './IGridCommon';
+import { IGridVodCommon } from './IGridCommon';
 
-export class EpisodeModel extends UiEventsViewModel implements IGridCommon {
+export class EpisodeModel extends UiEventsViewModel implements IGridVodCommon {
   Id: number;
   Parent: SeasonModel;
   Thumb: ThumbnailModel;

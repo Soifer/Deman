@@ -1,9 +1,9 @@
 import { Http, Response } from '@angular/http';
-import { ProgramModel } from '../../vod/models/program';
+import { ProgramModel } from '../../Vod/Models/program';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { Dal } from '../../Dal/dal.service';
-import { IService } from './IService';
+import { IService } from './iservice';
 
 
 
