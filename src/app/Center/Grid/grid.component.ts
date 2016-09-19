@@ -4,8 +4,8 @@ import { GenreService } from '../../Vod/Services/genre.service';
 import { IService } from '../../Vod/Services/iservice';
 import { ProgramService } from '../../Vod/Services/program.service'
 import { EpisodeService } from '../../Vod/Services/episode.service';
-import { GenreModel } from '../../Vod/Models/genre';
-import { IGridVodCommon } from '../../Vod/Models/IgridCommon';
+import { Genre } from '../../Vod/Models/genre';
+import { IGridCommon } from '../../Vod/Models/IgridCommon';
 
 @Component({
   selector: 'grid',
@@ -16,7 +16,7 @@ import { IGridVodCommon } from '../../Vod/Models/IgridCommon';
   }
 })
 export class GridComponent implements OnInit, OnDestroy {
-  items: IGridVodCommon[] = [];
+  items: IGridCommon[] = [];
   subscriber: any;
   services: any[] = [];
   selectedItem: any;
@@ -26,9 +26,7 @@ export class GridComponent implements OnInit, OnDestroy {
 
   constructor(context: Http) {
     this.services.push(new GenreService(context));
-    this.services.push(new ProgramService(context));
-    console.log(this.items);
-    
+    this.services.push(new ProgramService(context));  
   }
 
 
@@ -63,7 +61,7 @@ export class GridComponent implements OnInit, OnDestroy {
     this.selectedItem = null;
   }
   getItems() {
-    this.subscriber = this.services[0].getAll(this.top, this.skip).subscribe(data => {
+    this.subscriber = this.services[1].getAll(this.top, this.skip).subscribe(data => {
       this.isLoading = false;
       data.forEach(element => {
         this.items.push(element);

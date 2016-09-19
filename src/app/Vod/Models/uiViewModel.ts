@@ -1,4 +1,4 @@
-export class UiEventsViewModel {
+export class UiViewModel {
   public Visible: boolean ;
   public Changed: boolean = false;
   public MouseOver: boolean = false;

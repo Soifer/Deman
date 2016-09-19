@@ -1,14 +1,14 @@
-import { UiEventsViewModel } from './uiviewmodel';
+import { UiViewModel } from './uiViewModel';
 import { ThumbnailModel, ImageTypes } from './thumbnail';
-import { GenreModel } from './genre';
-import { IGridVodCommon } from './igridcommon';
+import { Genre } from './genre';
+import { IGridCommon } from './IGridCommon';
 
-export class ProgramModel extends UiEventsViewModel implements IGridVodCommon {
+export class ProgramModel extends UiViewModel implements IGridCommon {
   Id: number;
   Title: string;
   Color: string;
   Promo: string;
-  private Parent: GenreModel;
+  private Parent: Genre;
   private Thumb: ThumbnailModel;
   constructor(data) {
     super();
@@ -18,7 +18,7 @@ export class ProgramModel extends UiEventsViewModel implements IGridVodCommon {
     this.Thumb = new ThumbnailModel(data.Thumb);
     this.Visible = data.isVisible;
     this.Color = data.Color;
-    this.Parent = new GenreModel(data.Genre);
+    this.Parent = new Genre(data.Genre);
   }
   public get AvatarImg(): string {
     return this.Thumb.Images[ImageTypes[ImageTypes.Avatar]];

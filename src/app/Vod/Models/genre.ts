@@ -1,8 +1,8 @@
-import { UiEventsViewModel } from './uiviewmodel';
+import { UiViewModel } from './uiViewModel';
 import { ThumbnailModel, ImageTypes } from './thumbnail';
-import { IGridVodCommon } from './igridcommon';
+import { IGridCommon } from './igridcommon';
 
-export class GenreModel extends UiEventsViewModel implements IGridVodCommon {
+export class Genre extends UiViewModel implements IGridCommon {
   Title: string;
   Comments: string;
   Id: number;

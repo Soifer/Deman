@@ -3,7 +3,7 @@ import { ProgramModel } from '../../Vod/Models/program';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { Dal } from '../../Dal/dal.service';
-import { IService } from './iservice';
+import { IService } from './IService';
 
 
 
@@ -16,10 +16,10 @@ export class ProgramService implements IService<ProgramModel> {
         this._dal = new Dal(_http);
     }
 
-    getAll(skip: number, top: number): Observable<ProgramModel[]> {
+    getAll(top: number, skip: number): Observable<ProgramModel[]> {
         return this
             ._dal.GetItemsByUri('http://localhost/Nana10MVC/vod/program/get?%24top=' + top + '&%24skip=' + skip + '&%24orderby=Id%20desc')
-             .map((programs: Array<any>) => {
+            .map((programs: Array<any>) => {
                 let result: Array<ProgramModel> = [];
                 if (programs) {
                     programs.forEach((program: ProgramModel) => {

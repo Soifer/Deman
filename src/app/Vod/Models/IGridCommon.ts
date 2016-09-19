@@ -1,5 +1,5 @@
 
-export interface IGridVodCommon {
+export interface IGridCommon {
     Id: number;
     Title: string;
     Comments: string;

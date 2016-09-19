@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, AfterContentChecked, Af
 import { Http } from '@angular/http';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs/Rx';
-import { GenreModel } from '../../Vod/Models/genre';
+import { Genre } from '../../Vod/Models/genre';
 
 @Component({
     selector: 'gridItem',
@@ -14,7 +14,7 @@ import { GenreModel } from '../../Vod/Models/genre';
 export class GridItemComponent implements OnInit, AfterContentChecked, AfterContentInit {
     @Input() loading: boolean;
     @Input() isScrolled: boolean;
-    @Input() item: GenreModel;
+    @Input() item: Genre;
 
     @Output() doubleClick = new EventEmitter();
     titleField: FormControl;
