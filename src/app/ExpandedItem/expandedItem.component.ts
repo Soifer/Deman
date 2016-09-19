@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { GenreModel } from '../Vod/Models/genre';
+import { Genre } from '../Vod/Models/genre';
 
 @Component({
   selector: 'expandedItem',
@@ -10,7 +10,7 @@ import { GenreModel } from '../Vod/Models/genre';
 
 export class ExpandedCardComponent implements OnInit {
   @Output() closeElement = new EventEmitter();
-  @Input() item: GenreModel;
+  @Input() item: Genre;
 
   registerForm: FormGroup;
 
