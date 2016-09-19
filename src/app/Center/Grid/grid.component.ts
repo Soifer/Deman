@@ -6,6 +6,7 @@ import { ProgramService } from '../../Vod/Services/program.service'
 import { EpisodeService } from '../../Vod/Services/episode.service';
 import { Genre } from '../../Vod/Models/genre';
 import { IGridCommon } from '../../Vod/Models/IgridCommon';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'grid',
@@ -24,7 +25,9 @@ export class GridComponent implements OnInit, OnDestroy {
   skip: number = 0;
   top: number = 40;
 
-  constructor(context: Http) {
+  constructor(context: Http,public route: ActivatedRoute) {
+    console.log("grid ctor:" + route);
+    
     this.services.push(new GenreService(context));
     this.services.push(new ProgramService(context));  
   }
@@ -61,7 +64,7 @@ export class GridComponent implements OnInit, OnDestroy {
     this.selectedItem = null;
   }
   getItems() {
-    this.subscriber = this.services[1].getAll(this.top, this.skip).subscribe(data => {
+    this.subscriber = this.services[0].getAll(this.top, this.skip).subscribe(data => {
       this.isLoading = false;
       data.forEach(element => {
         this.items.push(element);

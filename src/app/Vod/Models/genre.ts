@@ -2,24 +2,20 @@ import { UiViewModel } from './uiViewModel';
 import { ThumbnailModel, ImageTypes } from './thumbnail';
 import { IGridCommon } from './igridcommon';
 
-export class Genre extends UiViewModel implements IGridCommon {
-  Title: string;
-  Comments: string;
-  Id: number;
+export class Genre extends UiViewModel {
+
   Thumb: ThumbnailModel;
   constructor(data) {
-    super();
-    this.Id = data.Id;
-    this.Visible = data.isVisible;
-    this.Title = data.Title;
-    this.Comments = data.Comments;
+    super(data);
     this.Thumb = new ThumbnailModel(data.Thumb);
+    this.Comments = data.Comments;
   }
 
-  public get AvatarImg(): string {
-    return this.Thumb.Images[ImageTypes[ImageTypes.Avatar]];
-  }
   public get MainImg(): string {
     return this.Thumb.Images[ImageTypes[ImageTypes.Standart]];
   }
+  public get AvatarImg(): string {
+    return this.Thumb.Images[ImageTypes[ImageTypes.Avatar]];
+  }
+
 }

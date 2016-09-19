@@ -71,10 +71,13 @@ min-height: 800px;
   float:right;
   transition: 0.5s;
 }
-.centerView90{
+.centerView-70{
+  width:70%;
+}
+.centerView-90{
   width:90%;
 }
-.centerView100{
+.centerView-100{
   width:100%;
 }
 

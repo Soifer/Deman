@@ -4,19 +4,14 @@ import { Genre } from './genre';
 import { IGridCommon } from './IGridCommon';
 
 export class ProgramModel extends UiViewModel implements IGridCommon {
-  Id: number;
-  Title: string;
   Color: string;
   Promo: string;
   private Parent: Genre;
   private Thumb: ThumbnailModel;
   constructor(data) {
-    super();
-    this.Title = data.Title;
+    super(data);
     this.Promo = data.Promo;
-    this.Id = data.Id;
     this.Thumb = new ThumbnailModel(data.Thumb);
-    this.Visible = data.isVisible;
     this.Color = data.Color;
     this.Parent = new Genre(data.Genre);
   }

@@ -3,6 +3,8 @@ import { Http } from '@angular/http';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs/Rx';
 import { Genre } from '../../Vod/Models/genre';
+import { IGridCommon } from '../../Vod/Models/IgridCommon';
+import { UiViewModel } from '../../Vod/Models/uiViewModel';
 
 @Component({
     selector: 'gridItem',
@@ -14,29 +16,30 @@ import { Genre } from '../../Vod/Models/genre';
 export class GridItemComponent implements OnInit, AfterContentChecked, AfterContentInit {
     @Input() loading: boolean;
     @Input() isScrolled: boolean;
-    @Input() item: Genre;
+    @Input() item: UiViewModel;
+    preItemState: UiViewModel = null;
 
     @Output() doubleClick = new EventEmitter();
     titleField: FormControl;
 
-    constructor(private cd: ChangeDetectorRef) { }
+    constructor(private cd: ChangeDetectorRef) {
+    }
     onDoubleClick() {
         this.doubleClick.emit(this.item);
     }
 
     setTitleFieldToEditable(data, event) {
         this.stopPropagation(event);
-        data.EditField = !data.EditField;
+        this.setTitleFieldToEditableMobile(data);
     }
 
     setTitleFieldToEditableMobile(data) {
-        data.EditField = !data.EditField;
+        data.isEditable = !data.isEditable;
     }
     stopPropagation(event) {
         event.stopPropagation();
     }
     ngAfterContentInit() {
-        console.log('ngAfterContentInit');
 
     }
 
@@ -45,15 +48,28 @@ export class GridItemComponent implements OnInit, AfterContentChecked, AfterCont
     }
     ngOnInit() {
         this.titleField = new FormControl(this.item.Title);
+
+        this.preItemState = new UiViewModel(this.item);
+
         this.titleField.valueChanges.subscribe(x => {
-            this.item.Changed = true,
-                this.item.Visible = true,
+
+            if (this.titleField.value !== this.preItemState.Title) {
                 this.item.Title = this.titleField.value;
-            console.log(this.item.Changed);
+                this.item.Changed = true;
+                this.item.isVisible = true;
+                console.log(true);
+            } else {
+                this.unDoChanges();
+            }
         });
 
     }
-
+    unDoChanges() {
+        this.item.Changed = this.preItemState.Changed;
+        this.item.isVisible = this.preItemState.isVisible;
+        this.item.isEditable = this.preItemState.isEditable;
+        this.item.Title = this.preItemState.Title;
+    }
     onInputChanged(event) {
         console.log(event);
     }
