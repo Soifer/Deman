@@ -1,5 +1,5 @@
 <div class="card-container">
-  <gridItem [loading]='isLoading' (pan)="setExpandedItem(item)" (doubleClick)="setExpandedItem(item)"  *ngFor="let item of items" [item]='item'></gridItem>
+  <gridItem (pan)="setExpandedItem(item)" (doubleClick)="setExpandedItem(item)"  *ngFor="let item of items" [item]='item'></gridItem>
   <expandedItem (closeElement)="clearItem($event)" *ngIf="selectedItem"  [item]="selectedItem"></expandedItem>
 </div>
 <div class="fa-container" *ngIf="isLoading">

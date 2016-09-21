@@ -9,12 +9,11 @@ import { UiViewModel } from '../../Vod/Models/uiViewModel';
 @Component({
     selector: 'gridItem',
     templateUrl: 'gridItem.component.html',
-    styleUrls: ['gridItem.component.css'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    styleUrls: ['gridItem.component.css']
+
 })
 
 export class GridItemComponent implements OnInit, AfterContentChecked, AfterContentInit {
-    @Input() loading: boolean;
     @Input() isScrolled: boolean;
     @Input() item: UiViewModel;
     preItemState: UiViewModel = null;
@@ -22,7 +21,7 @@ export class GridItemComponent implements OnInit, AfterContentChecked, AfterCont
     @Output() doubleClick = new EventEmitter();
     titleField: FormControl;
 
-    constructor(private cd: ChangeDetectorRef) {
+    constructor() {
     }
     onDoubleClick() {
         this.doubleClick.emit(this.item);
@@ -62,6 +61,7 @@ export class GridItemComponent implements OnInit, AfterContentChecked, AfterCont
                 this.unDoChanges();
             }
         });
+        console.log("item onInit");
 
     }
     unDoChanges() {

@@ -1,27 +1,25 @@
-
-<md-card  (mouseenter)='item.MouseOver = true;' (mouseleave)='item.MouseOver = false;' (dblclick)="onDoubleClick();" [class.changedCard]="item.Changed"
-    [class.notVisible]="!item.isVisible">
-    <md-card-header>
-         <span *ngIf="loading">Loading...</span>
-         <img *ngIf="!loading" md-card-avatar [src]="item?.AvatarImg">
-          <!--<img  md-card-avatar [src]="item.AvatarImg">-->
-      <md-card-title >
-       <span (dblclick)="setTitleFieldToEditable(item, $event)" (press)="setTitleFieldToEditableMobile(item)" *ngIf="!item.isEditable">{{item.Title}}</span> 
-       <div (dblclick)="stopPropagation($event)"  *ngIf="item.isEditable">
-        <md-input [formControl]="titleField"   (onchange)="onInputChanged($event)" type="text" >
-          <span (click)="unDoChanges()"  *ngIf="item.Changed" md-suffix><i class="material-icons unDo " >undo</i></span>
-         </md-input>  
-       </div>
-      </md-card-title>
-      <md-card-subtitle>{{item.Comments }}</md-card-subtitle>
-    </md-card-header>
-    <md-card-actions>
-      <button md-icon-button *ngIf="item?.Changed" (click)="item.Changed=false ">
+<md-card (mouseenter)='item.MouseOver = true;' (mouseleave)='item.MouseOver = false;' (dblclick)="onDoubleClick();" [class.changedCard]="item.Changed"
+  [class.notVisible]="!item.isVisible">
+  <md-card-header>
+    <img md-card-avatar [src]="item?.AvatarImg">
+    <!--<img  md-card-avatar [src]="item.AvatarImg">-->
+    <md-card-title>
+      <span (dblclick)="setTitleFieldToEditable(item, $event)" (press)="setTitleFieldToEditableMobile(item)" *ngIf="!item.isEditable">{{item.Title}}</span>
+      <div (dblclick)="stopPropagation($event)" *ngIf="item.isEditable">
+        <md-input [formControl]="titleField" (onchange)="onInputChanged($event)" type="text">
+          <span (click)="unDoChanges()" *ngIf="item.Changed" md-suffix><i class="material-icons unDo " >undo</i></span>
+        </md-input>
+      </div>
+    </md-card-title>
+    <md-card-subtitle>{{item.Comments}}</md-card-subtitle>
+  </md-card-header>
+  <md-card-actions>
+    <button md-icon-button *ngIf="item?.Changed" (click)="item.Changed=false ">
          <i class="material-icons pink100" >save</i>
       </button>
-      <button md-icon-button [class.eyeVisible]="item.MouseOver" [class.eyeNone]="!item.MouseOver" (click)="item.Changed=!item.Changed; item.isVisible=!item.isVisible; ">
+    <button md-icon-button [class.eyeVisible]="item.MouseOver" [class.eyeNone]="!item.MouseOver" (click)="item.Changed=!item.Changed; item.isVisible=!item.isVisible; ">
         <i style="color:#BDBDBD;" class="material-icons" *ngIf="item.isVisible">visibility_off</i>
         <i  style="color:#757575;" class="material-icons" *ngIf="!item.isVisible">visibility</i>
       </button>
-    </md-card-actions>
-  </md-card>
+  </md-card-actions>
+</md-card>

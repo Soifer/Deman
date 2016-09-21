@@ -6,7 +6,7 @@ import { ProgramService } from '../../Vod/Services/program.service'
 import { EpisodeService } from '../../Vod/Services/episode.service';
 import { Genre } from '../../Vod/Models/genre';
 import { IGridCommon } from '../../Vod/Models/IgridCommon';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router'
 
 @Component({
   selector: 'grid',
@@ -25,11 +25,13 @@ export class GridComponent implements OnInit, OnDestroy {
   skip: number = 0;
   top: number = 40;
 
-  constructor(context: Http,public route: ActivatedRoute) {
+  constructor(context: Http, public route: ActivatedRoute) {
     console.log("grid ctor:" + route);
-    
+    // console.log("test:" + data);
+
+
     this.services.push(new GenreService(context));
-    this.services.push(new ProgramService(context));  
+    this.services.push(new ProgramService(context));
   }
 
 
@@ -58,6 +60,11 @@ export class GridComponent implements OnInit, OnDestroy {
   }
   ngOnInit() {
     this.getItems();
+    let t = this.route.params.forEach((params: Params) => {
+      let id = +params['id']; // (+) converts string 'id' to a number
+      console.log("route data: " + id);
+    });
+
   }
 
   clearItem(data) {
@@ -66,10 +73,13 @@ export class GridComponent implements OnInit, OnDestroy {
   getItems() {
     this.subscriber = this.services[0].getAll(this.top, this.skip).subscribe(data => {
       this.isLoading = false;
+      console.log("getItems: " + this.isLoading);
       data.forEach(element => {
         this.items.push(element);
       });
     });
+
+
   }
 
   ngOnDestroy() {

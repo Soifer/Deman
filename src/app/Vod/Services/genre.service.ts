@@ -16,6 +16,8 @@ export class GenreService implements IService<Genre> {
     return this
       ._dal.GetItemsByUri('http://localhost/Nana10MVC/vod/genre/get?$top=' + top + '&$skip=' + skip + '&$orderby=Id desc')
       .map((genres) => {
+        console.log("getall genres:" + genres);
+        
         let result: Array<Genre> = [];
         if (genres) {
           genres.forEach((genre) => {
