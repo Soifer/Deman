@@ -1,8 +1,8 @@
 import { Http, Response } from '@angular/http';
-import { SeasonModel } from '../../vod/models/season';
+import { SeasonModel } from '../Models/season';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
-import { Dal } from '../../Dal/dal.service';
+import { Dal } from '../../DAL/dal.service';
 import { IService } from './IService';
 
 @Injectable()

@@ -1,4 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter, AfterContentChecked, AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import {
+    Component, OnInit, Input, Output, EventEmitter, AfterContentChecked,
+    AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef
+} from '@angular/core';
 import { Http } from '@angular/http';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs/Rx';
@@ -61,7 +64,6 @@ export class GridItemComponent implements OnInit, AfterContentChecked, AfterCont
                 this.unDoChanges();
             }
         });
-        console.log("item onInit");
 
     }
     unDoChanges() {
@@ -71,6 +73,5 @@ export class GridItemComponent implements OnInit, AfterContentChecked, AfterCont
         this.item.Title = this.preItemState.Title;
     }
     onInputChanged(event) {
-        console.log(event);
     }
 }

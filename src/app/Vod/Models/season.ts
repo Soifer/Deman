@@ -12,6 +12,8 @@ export class SeasonModel extends UiViewModel {
 
   constructor(data) {
     super(data);
+  
+    
     this.Parent = new ProgramModel(data.Program);
     this.Thumb = new ThumbnailModel(data.Thumb);
     this.FullEpisodes = data.FullEpisodes;
