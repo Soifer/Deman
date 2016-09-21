@@ -1,6 +1,6 @@
 import { UiViewModel } from './uiViewModel';
 import { ThumbnailModel, ImageTypes } from './thumbnail';
-import { IGridCommon } from './igridcommon';
+import { IGridCommon } from './IGridCommon';
 
 export class Genre extends UiViewModel {
 

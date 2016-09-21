@@ -11,14 +11,16 @@ export class UiViewModel implements IGridCommon {
   public Comments: string;
 
   constructor(data) {
+    if (data == null)
+      return;
     this.Title = data.Title;
     this.Id = data.Id;
-    this.isVisible = data.isVisible ;
+    this.isVisible = data.isVisible;
   }
 
 
   public get AvatarImg(): string {
-    throw "not implemented avatar image";
+    throw 'not implemented avatar image';
 
   }
 

@@ -12,6 +12,8 @@ export class ThumbnailModel {
   Images: { [key: string]: string; } = {};
 
   constructor(data: any) {
+    if (data == null)
+      return; // in case no thumb
     this.Id = data.Id;
     this.Comments = data.Comments;
     this.Created = new Date(data.Created);

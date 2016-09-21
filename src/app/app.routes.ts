@@ -9,9 +9,9 @@ import { DataResolver } from './app.resolver';
 
 
 export const ROUTES: Routes = [
-  { path: '', component: GridComponent,data:{test:"12345"},pathMatch:'full' },
-  { path: 'grid', component: GridComponent, pathMatch:'full'},
-  { path: 'grid/:id', component: GridComponent},
+  { path: '', component: GridComponent, data: { test: '12345' }, pathMatch: 'full' },
+  { path: 'grid', component: GridComponent, pathMatch: 'full' },
+  { path: 'grid/:id', component: GridComponent },
   { path: 'about', component: About },
   {
     path: 'detail', loadChildren: () => System.import('./+detail')
