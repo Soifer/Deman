@@ -8,6 +8,8 @@ import { Genre } from '../../Vod/Models/genre';
 import { IGridCommon } from '../../Vod/Models/IgridCommon';
 import { Router, ActivatedRoute, Params } from '@angular/router'
 
+console.log('`GRID` component loaded asynchronously');
+
 @Component({
   selector: 'grid',
   templateUrl: 'grid.component.html',
@@ -24,6 +26,7 @@ export class GridComponent implements OnInit, OnDestroy {
   isLoading: boolean = true;
   skip: number = 0;
   top: number = 40;
+  serviceId: number = 0;
 
   constructor(context: Http, public route: ActivatedRoute) {
     console.log("grid ctor:" + route);
@@ -59,19 +62,19 @@ export class GridComponent implements OnInit, OnDestroy {
     this.selectedItem = item;
   }
   ngOnInit() {
-    this.getItems();
     let t = this.route.params.forEach((params: Params) => {
-      let id = +params['id']; // (+) converts string 'id' to a number
-      console.log("route data: " + id);
+      this.serviceId = +params['id']; // (+) converts string 'id' to a number
     });
-
+    this.getItems();
   }
 
   clearItem(data) {
     this.selectedItem = null;
   }
   getItems() {
-    this.subscriber = this.services[0].getAll(this.top, this.skip).subscribe(data => {
+    console.log("service id:" + this.serviceId);
+
+    this.subscriber = this.services[isNaN(this.serviceId) ? 0 : this.serviceId].getAll(this.top, this.skip).subscribe(data => {
       this.isLoading = false;
       console.log("getItems: " + this.isLoading);
       data.forEach(element => {

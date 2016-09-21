@@ -6,7 +6,7 @@
           <p>VOD</p>
         </blockquote>
       </li>
-      <li [collapse]="isListCollapsed" class="panel-collapse" *ngFor="let item of items"><a routerLink="./grid"  routerLinkActive="active"> {{ item }} </a></li>
+      <li [collapse]="isListCollapsed" class="panel-collapse" *ngFor="let item of items"><a [routerLink]="['item.path']"  > {{ item.name }} </a></li>
     </ul>
   </div>
   <div>
@@ -16,7 +16,7 @@
           <p>Not VOD</p>
         </blockquote>
       </li>
-      <li [collapse]="isListCollapsed" class="panel-collapse" *ngFor="let item of items"><a [routerLink]=" ['./detail']"> {{ item }} </a></li>
+      <li [collapse]="isListCollapsed" class="panel-collapse" *ngFor="let item of items"><a [routerLink]=" ['./detail']"> {{ item.name }} </a></li>
     </ul>
   </div>
 </div>

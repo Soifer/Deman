@@ -1,17 +1,30 @@
-import { Component, ViewEncapsulation,OnInit, Output, Input, EventEmitter } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit, Output, Input, EventEmitter } from '@angular/core';
 
 
 @Component({
     selector: 'sideNav',
     templateUrl: './sideNav.component.html',
-    styleUrls:['sideNav.css'],
+    styleUrls: ['sideNav.css'],
 
 })
 export class SideNavComponent {
-    @Input() isCollapsed : boolean;
+    @Input() isCollapsed: boolean;
     isListCollapsed = true;
     @Output() modalItemSelected = new EventEmitter();
-    items = ['Genre', 'Program', 'Season', 'Episode', 'Feed'];
+    items = [
+        { name: 'Genre', path: '/grid/0' },
+        { name: 'Program', path: '/grid/1' },
+        { name: 'Episode', path: '/grid/0' },
+        { name: 'Season', path: '/grid/1' },
+        { name: 'Feed', path: '/grid/0' }
+        ];
+        //     items = [
+        // { name: 'Genre', path: '0' },
+        // { name: 'Program', path: '1' },
+        // { name: 'Episode', path: '0' },
+        // { name: 'Season', path: '1' },
+        // { name: 'Feed', path: '0' }
+        // ];
     constructor() { }
 
 }
