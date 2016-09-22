@@ -1,10 +1,18 @@
+ <div class="progressbarContainer">
+ <progressbar [animate]='true' class="progress-striped active" max="items.length" value="50" type="info"><i>{{items.length}}</i></progressbar>
+ </div>
 <div class="card-container">
-  <gridItem (pan)="setExpandedItem(item)" (doubleClick)="setExpandedItem(item)"  *ngFor="let item of items" [item]='item'></gridItem>
+  <gridItem (pan)="setExpandedItem(item)" (doubleClick)="setExpandedItem(item)"  *ngFor="let item of items" [item]='item'></gridItem>  
   <expandedItem (closeElement)="clearItem($event)" *ngIf="selectedItem"  [item]="selectedItem"></expandedItem>
 </div>
 <div class="fa-container" *ngIf="isLoading">
-  <!--<md-progress-circle  mode="indeterminate" color="accent"></md-progress-circle>-->
+  <md-progress-circle  mode="indeterminate" color="accent"></md-progress-circle>
   <!--<i  class="fa fa-spinner fa-pulse fa-5x fa-fw "></i>-->
-  <i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+  <!--<i class="fa fa-cog fa-spin fa-3x fa-fw"></i>-->
+<!--<md-progress-bar mode="determinate" value="myValue"></md-progress-bar>
+<br><br><br><br><br><br><br><br>
+<md-progress-bar mode="indeterminate"></md-progress-bar><br><br><br><br><br><br><br><br>
+<md-progress-bar mode="buffer" value="" bufferValue="myBufferValue"></md-progress-bar><br><br><br><br><br><br><br><br>
+<md-progress-bar mode="query"></md-progress-bar>-->
 </div>
 

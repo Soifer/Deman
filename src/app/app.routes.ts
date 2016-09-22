@@ -9,9 +9,7 @@ import { DataResolver } from './app.resolver';
 
 
 export const ROUTES: Routes = [
- // { path: '', redirectTo: '/grid', pathMatch: 'full' },
   { path: 'grid', component: GridComponent, pathMatch: 'full' },
   { path: 'grid/:id', component: GridComponent },
-  { path: 'detail', loadChildren: () => System.import('./+detail') },
   { path: '', component: NoContent }
 ];

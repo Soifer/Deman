@@ -1,8 +1,17 @@
 
+.progressbarContainer{
+    width: 100%;
+    position: fixed;
+    top:65px;
+    z-index: 25;
+}
+.progress-bar.progress-bar-info{
+    background-color: #F06292 !important;
+}
 .card-container{
     display: flex;
     flex-flow: row wrap;
-    top:65px;
+    top:75px;
     position:absolute;
   }
 .fa-container{

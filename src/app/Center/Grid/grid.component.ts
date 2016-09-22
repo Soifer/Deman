@@ -37,9 +37,6 @@ export class GridComponent implements OnInit, OnDestroy {
 
   constructor(context: Http, public route: ActivatedRoute) {
     console.log('grid ctor:' + route);
-    // console.log("test:" + data);
-
-
     this.services.push(new GenreService(context));
     this.services.push(new ProgramService(context));
     this.services.push(new SeasonService(context));
@@ -64,6 +61,7 @@ export class GridComponent implements OnInit, OnDestroy {
   setExpandedItem(item) {
     this.selectedItem = item;
   }
+
   ngOnInit() {
     this.routeSubscriber = this.route.params.subscribe(params => {
       this.serviceId = Number.parseInt(params['id']);
@@ -76,6 +74,7 @@ export class GridComponent implements OnInit, OnDestroy {
   clearItem(data) {
     this.selectedItem = null;
   }
+
   getItems() {
     console.log('service id:' + this.serviceId);
     this.subscriber = this.services[isNaN(this.serviceId) ? 0 : this.serviceId].getAll(this.top, this.skip).subscribe(data => {
@@ -84,8 +83,6 @@ export class GridComponent implements OnInit, OnDestroy {
         this.items.push(element);
       });
     });
-
-
   }
 
   ngOnDestroy() {
