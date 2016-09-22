@@ -4,6 +4,7 @@ import { GenreService } from '../../Vod/Services/genre.service';
 import { IService } from '../../Vod/Services/iservice';
 import { ProgramService } from '../../Vod/Services/program.service';
 import { EpisodeService } from '../../Vod/Services/episode.service';
+import { SeasonService } from '../../Vod/Services/season.service';
 import { Genre } from '../../Vod/Models/genre';
 import { IGridCommon } from '../../Vod/Models/IgridCommon';
 import { Router, ActivatedRoute, Params } from '@angular/router';
@@ -21,6 +22,7 @@ console.log('`GRID` component loaded asynchronously');
 export class GridComponent implements OnInit, OnDestroy {
   items: IGridCommon[] = [];
   subscriber: any;
+  routeSubscriber: any;
   services: any[] = [];
   selectedItem: any;
   isLoading: boolean = true;
@@ -40,6 +42,7 @@ export class GridComponent implements OnInit, OnDestroy {
 
     this.services.push(new GenreService(context));
     this.services.push(new ProgramService(context));
+    this.services.push(new SeasonService(context));
     this.services.push(new EpisodeService(context));
   }
 
@@ -50,8 +53,8 @@ export class GridComponent implements OnInit, OnDestroy {
       this.changePos = this.currPos + this.increasePosition;
       this.isScrolled = true;
       this.skip += this.top;
-      console.log("current position: " + this.currPos);
-      console.log("change position: " + this.changePos);
+      console.log('current position: ' + this.currPos);
+      console.log('change position: ' + this.changePos);
       this.getItems();
     } else {
       this.isScrolled = false;
@@ -62,17 +65,19 @@ export class GridComponent implements OnInit, OnDestroy {
     this.selectedItem = item;
   }
   ngOnInit() {
-    let t = this.route.params.forEach((params: Params) => {
-      this.serviceId = +params['id']; // (+) converts string 'id' to a number
+    this.routeSubscriber = this.route.params.subscribe(params => {
+      this.serviceId = Number.parseInt(params['id']);
+      this.items = [];
+      this.getItems();
     });
-    this.getItems();
+
   }
 
   clearItem(data) {
     this.selectedItem = null;
   }
   getItems() {
-    console.log("service id:" + this.serviceId);
+    console.log('service id:' + this.serviceId);
     this.subscriber = this.services[isNaN(this.serviceId) ? 0 : this.serviceId].getAll(this.top, this.skip).subscribe(data => {
       this.isLoading = false;
       data.forEach(element => {
@@ -85,5 +90,7 @@ export class GridComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscriber.unsubscribe();
+    this.routeSubscriber.unsubscribe();
+    this.services = [];
   }
 }

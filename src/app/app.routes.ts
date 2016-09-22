@@ -9,18 +9,9 @@ import { DataResolver } from './app.resolver';
 
 
 export const ROUTES: Routes = [
-  { path: '', component: GridComponent, data: { id: "0" }, pathMatch: 'full' },
+ // { path: '', redirectTo: '/grid', pathMatch: 'full' },
   { path: 'grid', component: GridComponent, pathMatch: 'full' },
-  { path: 'grid/:id', component: GridComponent, pathMatch: 'full' },
-
-  {
-    path: 'detail', loadChildren: () => System.import('./+detail')
-  },
-  { path: '**', component: NoContent }
-  // { path: '', component: GenreComponent },
-  // { path: 'genre', component: GenreComponent },
-  // { path: 'program', component: ProgramComponent },
-  // { path: 'season', component: SeasonComponent },
-  // { path: 'episode', component: SeasonComponent }
+  { path: 'grid/:id', component: GridComponent },
+  { path: 'detail', loadChildren: () => System.import('./+detail') },
+  { path: '', component: NoContent }
 ];
-// , children: [{ path: '', component: GridItemComponent }] 
