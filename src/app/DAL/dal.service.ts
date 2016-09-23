@@ -1,4 +1,4 @@
-import {  Inject } from '@angular/core';
+import { Inject } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
@@ -52,6 +52,8 @@ export class Dal {
         return Dal._instance;
     }
 
+
+
     /**
      * Creates an instance of NanaDal.
      *
@@ -80,17 +82,21 @@ export class Dal {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
         return this._http.get(this._dataDomain + this._factoryname + '/' + this._itemId)
-              .map(response => response.json())
+            .map(response => response.json())
             .catch(this.handleError);
     }
     GetItemsByUri(uri: string) {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
         return this._http.get(uri)
-        .map((res: Response) => res.json())
+            .map((res: Response) => res.json())
             .catch(this.handleError);
     }
 
+    getCount(controllerName: string) {
+        let uri = this._dataDomain + '/vod/count/get?control=' + controllerName;
+       return  this._http.get(uri);
+    }
     /**
      * (description)
      *

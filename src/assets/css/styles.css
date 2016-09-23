@@ -80,6 +80,24 @@ min-height: 800px;
 .centerView-100{
   width:100%;
 }
+/*Progress bar start*/
+.progressbarContainer{
+    width: 100%;
+    position: fixed;
+    top: 65px;
+    z-index: 25;
+}
+  .progress-bar, .progress-bar[role="progressbar"]{
+    background-color: #FCE4EC;
+    height: 15px;
+    line-height: 15px;
+    color:#009688;
+}
+.progress{
+  height: 15px;
+  border-radius:0;
+}
+/*Progress bar end*/
 
 /*Colors start*/
    .material-icons.pink100 { color: #E91E63; }

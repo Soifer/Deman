@@ -1,5 +1,7 @@
  <div class="progressbarContainer">
- <progressbar [animate]='true' class="progress-striped active" max="items.length" value="50" type="info"><i>{{items.length}}</i></progressbar>
+ <progressbar [animate]='true' class="progress-striped active" [max]='totalItems' [value]="items.length" type="">
+   <i>{{items.length}}</i>
+  </progressbar>
  </div>
 <div class="card-container">
   <gridItem (pan)="setExpandedItem(item)" (doubleClick)="setExpandedItem(item)"  *ngFor="let item of items" [item]='item'></gridItem>  

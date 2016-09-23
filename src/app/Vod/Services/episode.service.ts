@@ -9,6 +9,7 @@ import { IService } from './IService';
 export class EpisodeService implements IService<EpisodeModel> {
   errorMessage: string;
   _dal: Dal;
+  total: any;
 
   constructor(private _http: Http) {
     this._dal = new Dal(_http);
@@ -27,4 +28,13 @@ export class EpisodeService implements IService<EpisodeModel> {
         return result;
       });
   }
+  getCount(controllerName: string): Observable<any> {
+    return this._dal.getCount(controllerName).map((data: any) =>{
+       let result = data.json(); 
+       console.log("result: " + result);
+       
+       return result;
+      });
+  }
 }
+
