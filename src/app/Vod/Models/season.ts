@@ -12,8 +12,7 @@ export class SeasonModel extends UiViewModel {
 
   constructor(data) {
     super(data);
-  
-    
+
     this.Parent = new ProgramModel(data.Program);
     this.Thumb = new ThumbnailModel(data.Thumb);
     this.FullEpisodes = data.FullEpisodes;
@@ -23,6 +22,9 @@ export class SeasonModel extends UiViewModel {
   }
   public get AvatarImg(): string {
     return this.Thumb.Images[ImageTypes[ImageTypes.Avatar]];
+  }
+  public get MainImg(): string {
+    return this.Thumb.Images[ImageTypes[ImageTypes.Big]];
   }
 
 }

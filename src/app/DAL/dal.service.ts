@@ -1,4 +1,4 @@
-import {  Inject } from '@angular/core';
+import { Inject } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
@@ -10,7 +10,6 @@ import { Observable } from 'rxjs/Rx';
  * @class NanaDal
  */
 export class Dal {
-
     /**
      * (description)
      *
@@ -19,6 +18,9 @@ export class Dal {
      * @type {NanaDal}
      */
     private static _instance: Dal;
+
+    private _dataDomain: string = 'http://localhost/Nana10MVC/';
+
     /**
      * (description)
      *
@@ -33,13 +35,7 @@ export class Dal {
      * @type {number}
      */
     private _itemId: number;
-    /**
-     * (description)
-     *
-     * @private
-     * @type {string}
-     */
-    private _dataDomain: string = 'http://localhost/Nana10MVC/';
+
 
 
     /**
@@ -80,14 +76,14 @@ export class Dal {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
         return this._http.get(this._dataDomain + this._factoryname + '/' + this._itemId)
-              .map(response => response.json())
+            .map(response => response.json())
             .catch(this.handleError);
     }
     GetItemsByUri(uri: string) {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        return this._http.get(uri)
-        .map((res: Response) => res.json())
+        return this._http.get(this._dataDomain + uri)
+            .map((res: Response) => res.json())
             .catch(this.handleError);
     }
 

@@ -12,8 +12,15 @@ export class ThumbnailModel {
   Images: { [key: string]: string; } = {};
 
   constructor(data: any) {
-    if (data == null)
-      return; // in case no thumb
+    if (data == null) {
+      this.Images[ImageTypes[ImageTypes.Avatar]] = '../../../assets/img/10 logo_@3x ff2929.png';
+      this.Images[ImageTypes[ImageTypes.Big]] =
+        this.Images[ImageTypes[ImageTypes.Standart]] =
+        this.Images[ImageTypes[ImageTypes.Medium]] =
+        this.Images[ImageTypes[ImageTypes.Small]] = '../../../assets/img/640-360.png';
+      return;
+    }
+
     this.Id = data.Id;
     this.Comments = data.Comments;
     this.Created = new Date(data.Created);

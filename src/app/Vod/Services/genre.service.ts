@@ -14,7 +14,7 @@ export class GenreService implements IService<Genre> {
   }
   getAll(top: number, skip: number): Observable<Genre[]> {
     return this
-      ._dal.GetItemsByUri('http://localhost/Nana10MVC/vod/genre/get?$top=' + top + '&$skip=' + skip + '&$orderby=Id desc')
+      ._dal.GetItemsByUri('/vod/genre/get?$top=' + top + '&$skip=' + skip + '&$orderby=Id desc')
       .map((genres) => {
         console.log('getall genres:' + genres);
 
@@ -25,7 +25,7 @@ export class GenreService implements IService<Genre> {
           });
         }
         return result;
-      }).delay(0)
+      }).debounceTime(100)
       ;
   }
 }
