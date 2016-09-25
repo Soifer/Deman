@@ -10,7 +10,6 @@ import { Observable } from 'rxjs/Rx';
  * @class NanaDal
  */
 export class Dal {
-
     /**
      * (description)
      *
@@ -19,6 +18,9 @@ export class Dal {
      * @type {NanaDal}
      */
     private static _instance: Dal;
+
+    private _dataDomain: string = 'http://localhost/Nana10MVC/';
+
     /**
      * (description)
      *
@@ -33,13 +35,7 @@ export class Dal {
      * @type {number}
      */
     private _itemId: number;
-    /**
-     * (description)
-     *
-     * @private
-     * @type {string}
-     */
-    private _dataDomain: string = 'http://localhost/Nana10MVC/';
+
 
 
     /**
@@ -88,14 +84,14 @@ export class Dal {
     GetItemsByUri(uri: string) {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        return this._http.get(uri)
+        return this._http.get(this._dataDomain + uri)
             .map((res: Response) => res.json())
             .catch(this.handleError);
     }
 
     getCount(controllerName: string) {
         let uri = this._dataDomain + '/vod/count/get?control=' + controllerName;
-       return  this._http.get(uri);
+        return this._http.get(uri);
     }
     /**
      * (description)

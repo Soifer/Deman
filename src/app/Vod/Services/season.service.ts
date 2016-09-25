@@ -14,7 +14,7 @@ export class SeasonService implements IService<SeasonModel> {
     }
     getAll(): Observable<SeasonModel[]> {
         return this
-            ._dal.GetItemsByUri('http://localhost/Nana10MVC/vod/season/get')
+            ._dal.GetItemsByUri('/vod/season/get')
             .map((seasons: Array<SeasonModel>) => {
                 let result: Array<SeasonModel> = [];
                 if (seasons) {

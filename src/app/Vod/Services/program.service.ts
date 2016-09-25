@@ -18,7 +18,7 @@ export class ProgramService implements IService<ProgramModel> {
 
     getAll(top: number, skip: number): Observable<ProgramModel[]> {
         return this
-            ._dal.GetItemsByUri('http://localhost/Nana10MVC/vod/program/get?%24top=' + top + '&%24skip=' + skip + '&%24orderby=Id%20desc')
+            ._dal.GetItemsByUri('/vod/program/get?%24top=' + top + '&%24skip=' + skip + '&%24orderby=Id%20desc')
             .map((programs: Array<any>) => {
                 let result: Array<ProgramModel> = [];
                 if (programs) {
