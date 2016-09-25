@@ -48,6 +48,8 @@ export class Dal {
         return Dal._instance;
     }
 
+
+
     /**
      * Creates an instance of NanaDal.
      *
@@ -87,6 +89,10 @@ export class Dal {
             .catch(this.handleError);
     }
 
+    getCount(controllerName: string) {
+        let uri = this._dataDomain + '/vod/count/get?control=' + controllerName;
+        return this._http.get(uri);
+    }
     /**
      * (description)
      *

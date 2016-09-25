@@ -34,8 +34,10 @@ export class GridComponent implements OnInit, OnDestroy {
   startPos: number = 0;
   changePos: number = 50;
   increasePosition: number = 300;
+  totalItems: number = 0;
+  total: any;
 
-  constructor(context: Http, public route: ActivatedRoute) {
+  constructor(private context: Http, public route: ActivatedRoute) {
     console.log('grid ctor:' + route);
     this.services.push(new GenreService(context));
     this.services.push(new ProgramService(context));
@@ -66,7 +68,9 @@ export class GridComponent implements OnInit, OnDestroy {
     this.routeSubscriber = this.route.params.subscribe(params => {
       this.serviceId = Number.parseInt(params['id']);
       this.items = [];
+      this.getCount();
       this.getItems();
+
     });
 
   }
@@ -76,15 +80,25 @@ export class GridComponent implements OnInit, OnDestroy {
   }
 
   getItems() {
-    console.log('service id:' + this.serviceId);
     this.subscriber = this.services[isNaN(this.serviceId) ? 0 : this.serviceId].getAll(this.top, this.skip).subscribe(data => {
       this.isLoading = false;
       data.forEach(element => {
         this.items.push(element);
       });
+
     });
   }
+  getCount() {
+    this.total = this.services[isNaN(this.serviceId) ? 0 : this.serviceId].getCount('EpisodeController')
+      .subscribe(data => {
+        this.totalItems = data;
+        console.log("controller data: " + data);
+         console.log("controller: " + this.totalItems);
+      });
+   
 
+    // this.services[isNaN(this.serviceId) ? 0 : this.serviceId].getCount('EpisodeController').s;
+  }
   ngOnDestroy() {
     this.subscriber.unsubscribe();
     this.routeSubscriber.unsubscribe();
