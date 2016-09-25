@@ -8,21 +8,20 @@ import { SeasonService } from '../../Vod/Services/season.service';
 import { Genre } from '../../Vod/Models/genre';
 import { IGridCommon } from '../../Vod/Models/IgridCommon';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Subscription } from 'rxjs/Rx';
 
 console.log('`GRID` component loaded asynchronously');
 
 @Component({
   selector: 'grid',
   templateUrl: 'grid.component.html',
-  styleUrls: ['grid.component.css'],
-  // host: {
-  //   '(window:scroll)': 'scrolleEvent($event)'
-  // }
+  styleUrls: ['grid.component.css']
 })
 export class GridComponent implements OnInit, OnDestroy {
   items: IGridCommon[] = [];
-  subscriber: any;
-  routeSubscriber: any;
+  subscriber: Subscription;
+  routeSubscriber: Subscription;
+  counterSubscriber: Subscription;
   services: any[] = [];
   selectedItem: any;
   isLoading: boolean = true;
@@ -44,34 +43,21 @@ export class GridComponent implements OnInit, OnDestroy {
   constructor(private context: Http, public route: ActivatedRoute) {
     this.windowHeight = window.innerHeight;
     this.windowWidth = window.innerWidth;
-    console.log('grid ctor:' + route);
+    // console.log('grid ctor:' + route);
     this.services.push(new GenreService(context));
     this.services.push(new ProgramService(context));
     this.services.push(new SeasonService(context));
     this.services.push(new EpisodeService(context));
   }
 
-  // scrolleEvent(evt) {
-
-  //   this.currPos = (window.pageYOffset || evt.target.scrollBottom) - (evt.target.clientBottom || 0);
-  //   if (this.currPos >= this.changePos) {
-  //     this.changePos = this.currPos + this.increasePosition;
-  //     this.isScrolled = true;
-  //     this.skip += this.top;
-  //     console.log('current position: ' + this.currPos);
-  //     console.log('change position: ' + this.changePos);
-  //     this.getItems();
-  //   } else {
-  //     this.isScrolled = false;
-  //   }
-  // }
   getItemsCapacity() {
-    let rows = parseInt((this.windowWidth / this.itemWidth).toFixed());
-    let columns = parseInt((this.windowHeight / this.itemHeight).toFixed());
+    let rows = parseInt((this.windowWidth / this.itemWidth).toFixed(), 10);
+    let columns = parseInt((this.windowHeight / this.itemHeight).toFixed(), 10);
     this.top = (rows * columns);
   }
 
   onScroll() {
+    this.skip += this.top;
     this.getItems();
   }
   setExpandedItem(item) {
@@ -80,16 +66,12 @@ export class GridComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.getItemsCapacity();
-
-
     this.routeSubscriber = this.route.params.subscribe(params => {
       this.serviceId = Number.parseInt(params['id']);
       this.items = [];
       this.getCount();
       this.getItems();
-
     });
-
   }
 
   clearItem(data) {
@@ -106,17 +88,14 @@ export class GridComponent implements OnInit, OnDestroy {
     });
   }
   getCount() {
-    this.total = this.services[isNaN(this.serviceId) ? 0 : this.serviceId].getCount('EpisodeController')
-      .subscribe(data => {
-        this.totalItems = data;
-      });
+    this.counterSubscriber = this.services[isNaN(this.serviceId) ? 0 : this.serviceId].getCount()
+      .subscribe(data => this.totalItems = data);
 
-
-    // this.services[isNaN(this.serviceId) ? 0 : this.serviceId].getCount('EpisodeController').s;
   }
   ngOnDestroy() {
     this.subscriber.unsubscribe();
     this.routeSubscriber.unsubscribe();
+    this.counterSubscriber.unsubscribe();
     this.services = [];
   }
 }

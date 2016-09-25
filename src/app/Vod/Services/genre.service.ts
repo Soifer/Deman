@@ -14,10 +14,8 @@ export class GenreService implements IService<Genre> {
   }
   getAll(top: number, skip: number): Observable<Genre[]> {
     return this
-      ._dal.GetItemsByUri('/vod/genre/get?$top=' + top + '&$skip=' + skip + '&$orderby=Id desc')
+      ._dal.GetItemsByUri('/vod/genre/get?$top=' + top + '&$skip=' + skip + '&$orderby=DisplayOrder desc')
       .map((genres) => {
-        console.log('getall genres:' + genres);
-
         let result: Array<Genre> = [];
         if (genres) {
           genres.forEach((genre) => {
@@ -25,7 +23,13 @@ export class GenreService implements IService<Genre> {
           });
         }
         return result;
-      }).debounceTime(100)
+      })
       ;
+  }
+  getCount(controllerName: string = 'GenreController'): Observable<Number> {
+    return this._dal.getCount(controllerName).map((data: any) => {
+      let result: number = Number.parseInt(data.json());
+      return result;
+    });
   }
 }

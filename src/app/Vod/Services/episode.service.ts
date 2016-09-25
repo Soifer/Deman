@@ -17,7 +17,7 @@ export class EpisodeService implements IService<EpisodeModel> {
 
   getAll(top: number, skip: number): Observable<EpisodeModel[]> {
     return this
-      ._dal.GetItemsByUri('/vod/episode/get?%24top=' + top + '&%24skip=' + skip + '&%24orderby=Id%20desc')
+      ._dal.GetItemsByUri('/vod/episode/get?$top=' + top + '&$skip=' + skip + '&$orderby=DisplayOrder desc')
       .map((episodes: Array<EpisodeModel>) => {
         let result: Array<EpisodeModel> = [];
         if (episodes) {
@@ -28,13 +28,11 @@ export class EpisodeService implements IService<EpisodeModel> {
         return result;
       });
   }
-  getCount(controllerName: string): Observable<any> {
-    return this._dal.getCount(controllerName).map((data: any) =>{
-       let result = data.json(); 
-       console.log("result: " + result);
-       
-       return result;
-      });
+  getCount(controllerName: string= 'EpisodeController'): Observable<Number> {
+    return this._dal.getCount(controllerName).map((data: any) => {
+      let result: number = Number.parseInt(data.json());
+      return result;
+    });
   }
 }
 

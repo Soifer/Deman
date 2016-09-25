@@ -12,9 +12,9 @@ export class SeasonService implements IService<SeasonModel> {
     constructor(private _http: Http) {
         this._dal = new Dal(_http);
     }
-    getAll(): Observable<SeasonModel[]> {
+    getAll(top: number, skip: number): Observable<SeasonModel[]> {
         return this
-            ._dal.GetItemsByUri('/vod/season/get')
+            ._dal.GetItemsByUri('/vod/season/get?$top=' + top + '&$skip=' + skip + '&$orderby=DisplayOrder desc')
             .map((seasons: Array<SeasonModel>) => {
                 let result: Array<SeasonModel> = [];
                 if (seasons) {
@@ -24,5 +24,13 @@ export class SeasonService implements IService<SeasonModel> {
                 }
                 return result;
             });
+    }
+    getCount(controllerName: string = 'SeasonController'): Observable<Number> {
+        return this._dal.getCount(controllerName).map((data: any) => {
+            let result: number = Number.parseInt(data.json());
+            console.log(data);
+            
+            return result;
+        });
     }
 }

@@ -4,4 +4,5 @@ export interface IGridCommon {
     Title: string;
     Comments: string;
     readonly AvatarImg: string;
+    DisplayOrder: number;
 }

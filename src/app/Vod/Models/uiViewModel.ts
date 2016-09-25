@@ -9,6 +9,7 @@ export class UiViewModel implements IGridCommon {
   public Id: number;
   public Title: string;
   public Comments: string;
+  public DisplayOrder: number;
 
   constructor(data) {
     if (data == null)
@@ -16,6 +17,7 @@ export class UiViewModel implements IGridCommon {
     this.Title = data.Title;
     this.Id = data.Id;
     this.isVisible = data.isVisible;
+    this.DisplayOrder = data.DisplayOrder;
   }
 
 

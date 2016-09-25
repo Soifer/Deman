@@ -18,7 +18,7 @@ export class ProgramService implements IService<ProgramModel> {
 
     getAll(top: number, skip: number): Observable<ProgramModel[]> {
         return this
-            ._dal.GetItemsByUri('/vod/program/get?%24top=' + top + '&%24skip=' + skip + '&%24orderby=Id%20desc')
+            ._dal.GetItemsByUri('/vod/program/get?$top=' + top + '&$skip=' + skip + '&$orderby=DisplayOrder desc')
             .map((programs: Array<any>) => {
                 let result: Array<ProgramModel> = [];
                 if (programs) {
@@ -29,4 +29,10 @@ export class ProgramService implements IService<ProgramModel> {
                 return result;
             });
     }
+      getCount(controllerName: string = 'ProgramController'): Observable<Number> {
+    return this._dal.getCount(controllerName).map((data: any) => {
+      let result: number = Number.parseInt(data.json());
+      return result;
+    });
+  }
 }

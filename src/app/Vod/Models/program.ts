@@ -8,6 +8,7 @@ export class ProgramModel extends UiViewModel implements IGridCommon {
   Promo: string;
   private Parent: Genre;
   private Thumb: ThumbnailModel;
+  
   constructor(data) {
     super(data);
     this.Promo = data.Promo;

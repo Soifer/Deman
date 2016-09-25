@@ -6,7 +6,6 @@ import { IGridCommon } from './IGridCommon';
 export class EpisodeModel extends UiViewModel {
   Parent: SeasonModel;
   Thumb: ThumbnailModel;
-  DisplayOrder: number;
   ProgramId: number;
   SubTitle: string;
   VideoId: number;
@@ -17,7 +16,6 @@ export class EpisodeModel extends UiViewModel {
     super(data);
     this.Parent = new SeasonModel(data.Season);
     this.Thumb = new ThumbnailModel(data.Thumb);
-    this.DisplayOrder = data.DisplayOrder;
     this.ProgramId = data.ProgramId;
     this.SubTitle = data.SubTitle;
     this.VideoId = data.VideoId;
