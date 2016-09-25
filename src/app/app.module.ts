@@ -26,6 +26,8 @@ import { Home } from './home';
 import { About } from './about';
 import { NoContent } from './no-content';
 
+import { InfiniteScrollModule } from 'angular2-infinite-scroll';
+
 // Import diretives
 import { XLarge } from './home/x-large';
 import { MdIconRegistry } from '@angular2-material/icon';
@@ -52,7 +54,7 @@ const APP_PROVIDERS = [
     ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES, { useHash: false }),
-    MdModule.forRoot(), CollapseModule, ModalModule, Ng2BootstrapModule, FormsModule
+    MdModule.forRoot(), CollapseModule, ModalModule, Ng2BootstrapModule, FormsModule, InfiniteScrollModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
