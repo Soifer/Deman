@@ -6,6 +6,10 @@
     top:75px;
     position:absolute;
   }
+  .kvas{
+      float:right;
+      position: relative;
+  }
 .fa-container{
     text-align: center;
     float: none;
@@ -25,6 +29,9 @@
      overflow-y: scroll;
  }
 
+.pivo{
+    -webkit-user-drag: element !important;
+}
 @media screen and (max-width: 820px) {
     gridItem{
       width:50%;

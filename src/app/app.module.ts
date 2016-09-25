@@ -5,13 +5,14 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 import { CollapseModule, Ng2BootstrapModule, ModalModule } from 'ng2-bootstrap/ng2-bootstrap';
-
+import { DragulaModule } from 'ng2-dragula/ng2-dragula';
 import { SideNavComponent } from './SideNav/sideNav.component';
 import { MenuBarComponent } from './MenuBar/menuBar.component';
 import { GridComponent } from './Center/Grid/grid.component';
 import { GridItemComponent } from './Center/GridItem/gridItem.component';
 import { ExpandedCardComponent } from './ExpandedItem/expandedItem.component';
 import { GenreService } from './Vod/Services/genre.service';
+
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -54,7 +55,7 @@ const APP_PROVIDERS = [
     ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES, { useHash: false }),
-    MdModule.forRoot(), CollapseModule, ModalModule, Ng2BootstrapModule, FormsModule, InfiniteScrollModule
+    MdModule.forRoot(), CollapseModule, ModalModule, Ng2BootstrapModule, FormsModule, InfiniteScrollModule, DragulaModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,

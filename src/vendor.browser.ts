@@ -13,6 +13,8 @@ import '@angular/common';
 import '@angular/forms';
 import '@angular/http';
 import '@angular/router';
+import 'dragula/dist/dragula.css';
+
 
 // Hammer.js
 // We need to import this library in order for Material to work

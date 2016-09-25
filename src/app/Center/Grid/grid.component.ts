@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef } from '@angular/core';
 import { Http } from '@angular/http';
 import { GenreService } from '../../Vod/Services/genre.service';
 import { IService } from '../../Vod/Services/iservice';
@@ -8,6 +8,7 @@ import { SeasonService } from '../../Vod/Services/season.service';
 import { Genre } from '../../Vod/Models/genre';
 import { IGridCommon } from '../../Vod/Models/IgridCommon';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { DragulaService } from 'ng2-dragula/ng2-dragula';
 
 console.log('`GRID` component loaded asynchronously');
 
@@ -41,7 +42,7 @@ export class GridComponent implements OnInit, OnDestroy {
   itemWidth: number = 274;
   itemHeight: number = 155;
 
-  constructor(private context: Http, public route: ActivatedRoute) {
+  constructor(private context: Http, public route: ActivatedRoute, private dragulaService: DragulaService) {
     this.windowHeight = window.innerHeight;
     this.windowWidth = window.innerWidth;
     console.log('grid ctor:' + route);
@@ -49,6 +50,23 @@ export class GridComponent implements OnInit, OnDestroy {
     this.services.push(new ProgramService(context));
     this.services.push(new SeasonService(context));
     this.services.push(new EpisodeService(context));
+
+    dragulaService.setOptions('pivo', {
+      revertOnSpill: true
+    });
+  }
+
+  allowDrop() {
+    console.log("allowdrop");
+
+  }
+
+  drag() {
+    console.log("drag");
+  }
+
+  drop() {
+    console.log("drop");
   }
 
   // scrolleEvent(evt) {
@@ -72,6 +90,7 @@ export class GridComponent implements OnInit, OnDestroy {
   }
 
   onScroll() {
+    this.skip += this.top;
     this.getItems();
   }
   setExpandedItem(item) {
@@ -79,9 +98,8 @@ export class GridComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+
     this.getItemsCapacity();
-
-
     this.routeSubscriber = this.route.params.subscribe(params => {
       this.serviceId = Number.parseInt(params['id']);
       this.items = [];
