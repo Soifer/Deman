@@ -31,16 +31,17 @@ export class GridComponent implements OnInit, OnDestroy {
   top: number;
   serviceId: number = 0;
   isScrolled = false;
-  currPos: number = 0;
-  startPos: number = 0;
-  changePos: number = 50;
-  increasePosition: number = 300;
+  currPosition: number;
+  lastPosition:number = 150;
+  deltaPosition: number = 50;
   totalItems: number = 0;
   total: any;
   windowHeight: number;
   windowWidth: number;
   itemWidth: number = 274;
   itemHeight: number = 155;
+  rows: number;
+  columns: number;
 
   constructor(private context: Http, public route: ActivatedRoute, private dragulaService: DragulaService) {
     this.windowHeight = window.innerHeight;
@@ -54,45 +55,36 @@ export class GridComponent implements OnInit, OnDestroy {
     dragulaService.setOptions('pivo', {
       revertOnSpill: true
     });
+    dragulaService.dropModel.subscribe((value) => {
+      this.onDropModel(value.slice(1));
+    });
+    dragulaService.removeModel.subscribe((value) => {
+      this.onRemoveModel(value.slice(1));
+    });
+  }
+  private onDropModel(args) {
+    let [el, target, source] = args;
+    console.log("inDropModel: " + args);
+
+    // do something else
   }
 
-  allowDrop() {
-    console.log("allowdrop");
-
+  private onRemoveModel(args) {
+    let [el, source] = args;
+    console.log("onRemoveModel: " + args);
   }
 
-  drag() {
-    console.log("drag");
-  }
-
-  drop() {
-    console.log("drop");
-  }
-
-  // scrolleEvent(evt) {
-
-  //   this.currPos = (window.pageYOffset || evt.target.scrollBottom) - (evt.target.clientBottom || 0);
-  //   if (this.currPos >= this.changePos) {
-  //     this.changePos = this.currPos + this.increasePosition;
-  //     this.isScrolled = true;
-  //     this.skip += this.top;
-  //     console.log('current position: ' + this.currPos);
-  //     console.log('change position: ' + this.changePos);
-  //     this.getItems();
-  //   } else {
-  //     this.isScrolled = false;
-  //   }
-  // }
   getItemsCapacity() {
-    let rows = parseInt((this.windowWidth / this.itemWidth).toFixed());
-    let columns = parseInt((this.windowHeight / this.itemHeight).toFixed());
-    this.top = (rows * columns);
+    this.rows = parseInt((this.windowWidth / this.itemWidth).toFixed());
+    this.columns = parseInt((this.windowHeight / this.itemHeight).toFixed());
+    this.top = (this.rows * this.columns);
   }
 
-  onScroll() {
+  onScroll(data) {
     this.skip += this.top;
     this.getItems();
   }
+  
   setExpandedItem(item) {
     this.selectedItem = item;
   }

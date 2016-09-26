@@ -109,7 +109,7 @@ min-height: 800px;
   margin: 0 !important;
   z-index: 9999 !important;
   opacity: 0.8;
-  background-color: #FCE4EC;
+  border:1px solid #FCE4EC;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
   filter: alpha(opacity=80);
 }
@@ -124,7 +124,7 @@ min-height: 800px;
 }
 .gu-transit {
   opacity: 0.6;
-    background-color: #009688;
+     border:1px solid #F06292;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
   filter: alpha(opacity=20);
 }

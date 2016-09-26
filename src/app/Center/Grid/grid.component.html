@@ -1,13 +1,14 @@
- <div class="progressbarContainer"  
-     infinite-scroll
-     [infiniteScrollDistance]="10"
-     [infiniteScrollThrottle]="300"
-     (scrolled)="onScroll()">
+ <div class="progressbarContainer" >
  <progressbar [animate]='true' class="progress-striped " type='info' [max]='totalItems' [value]="items.length" type="">
    <i>{{items.length}}</i>
   </progressbar>
  </div>
-<div [dragula]='"pivo"' class="card-container">
+<div [dragula]='"pivo"' [dragulaModel]='items' class="card-container"
+     infinite-scroll
+     [infiniteScrollDistance]="2"
+     [infiniteScrollThrottle]="400"     
+     (scrolled)="onScroll()"
+>
   <gridItem  (doubleClick)="setExpandedItem(item)"  *ngFor="let item of items" [item]='item'></gridItem>  
   <expandedItem (closeElement)="clearItem($event)" *ngIf="selectedItem"  [item]="selectedItem"></expandedItem>
 </div>
