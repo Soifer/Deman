@@ -29,6 +29,8 @@ export class EpisodeService implements IService<EpisodeModel> {
       });
   }
   getCount(controllerName: string): Observable<any> {
+        console.log("get count: ");
+    
     return this._dal.getCount(controllerName).map((data: any) =>{
        let result = data.json(); 
        console.log("result: " + result);

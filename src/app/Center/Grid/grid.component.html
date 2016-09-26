@@ -3,12 +3,11 @@
    <i>{{items.length}}</i>
   </progressbar>
  </div>
-<div [dragula]='"pivo"' [dragulaModel]='items' class="card-container"
+<div [dragula]='"cardGrid"' [dragulaModel]='items' class="card-container"
      infinite-scroll
      [infiniteScrollDistance]="2"
      [infiniteScrollThrottle]="400"     
-     (scrolled)="onScroll()"
->
+     (scrolled)="onScroll()">
   <gridItem  (doubleClick)="setExpandedItem(item)"  *ngFor="let item of items" [item]='item'></gridItem>  
   <expandedItem (closeElement)="clearItem($event)" *ngIf="selectedItem"  [item]="selectedItem"></expandedItem>
 </div>

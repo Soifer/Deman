@@ -124,7 +124,7 @@ min-height: 800px;
 }
 .gu-transit {
   opacity: 0.6;
-     border:1px solid #F06292;
+     border:1px solid #E91E63;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
   filter: alpha(opacity=20);
 }

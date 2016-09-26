@@ -20,6 +20,9 @@ console.log('`GRID` component loaded asynchronously');
   //   '(window:scroll)': 'scrolleEvent($event)'
   // }
 })
+
+
+
 export class GridComponent implements OnInit, OnDestroy {
   items: IGridCommon[] = [];
   subscriber: any;
@@ -32,7 +35,7 @@ export class GridComponent implements OnInit, OnDestroy {
   serviceId: number = 0;
   isScrolled = false;
   currPosition: number;
-  lastPosition:number = 150;
+  lastPosition: number = 150;
   deltaPosition: number = 50;
   totalItems: number = 0;
   total: any;
@@ -52,7 +55,7 @@ export class GridComponent implements OnInit, OnDestroy {
     this.services.push(new SeasonService(context));
     this.services.push(new EpisodeService(context));
 
-    dragulaService.setOptions('pivo', {
+    dragulaService.setOptions('cardGrid', {
       revertOnSpill: true
     });
     dragulaService.dropModel.subscribe((value) => {
@@ -84,7 +87,7 @@ export class GridComponent implements OnInit, OnDestroy {
     this.skip += this.top;
     this.getItems();
   }
-  
+
   setExpandedItem(item) {
     this.selectedItem = item;
   }
