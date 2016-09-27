@@ -87,9 +87,7 @@ export class GridComponent implements OnInit, OnDestroy {
     this.getItemsCapacity();
     this.routeSubscriber = this.route.params.subscribe(params => {
       this.serviceId = Number.parseInt(params[this.urlServiceParam]);
-      console.log('service:' + this.serviceId);
-      console.log('param' + params[this.urlServiceParam]);
-      
+
       this.items = [];
       this.getCount();
       this.getItems();

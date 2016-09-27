@@ -5,17 +5,18 @@ import { Observable } from 'rxjs/Rx';
 import { Dal } from '../../common/services/dal.service';
 import { IService } from './../../common/Iservice';
 import { GenreModel } from './../models//genre';
+import { AbstractBase } from './../../common/services/absract-base.service';
 
 @Injectable()
-export class GenreService implements IService<GenreModel> {
+export class GenreService extends AbstractBase implements IService<GenreModel> {
   errorMessage: string;
-  _dal: Dal;
-  constructor(private _http: Http) {
-    this._dal = new Dal(_http);
+
+  constructor(http: Http) {
+    super(http);
   }
   getAll(top: number, skip: number): Observable<GenreModel[]> {
     return this
-      ._dal.GetItemsByUri('/vod/genre/get?$top=' + top + '&$skip=' + skip + '&$orderby=DisplayOrder desc')
+      .dal.GetItemsByUri('/vod/genre/get?$top=' + top + '&$skip=' + skip + '&$orderby=DisplayOrder desc')
       .map((genres) => {
         let result: Array<GenreModel> = [];
         if (genres) {
@@ -24,14 +25,6 @@ export class GenreService implements IService<GenreModel> {
           });
         }
         return result;
-      })
-      ;
-  }
-  getCount(controllerName: string): Observable<any> {
-    console.log('genre:' + controllerName);
-    return this._dal.getCount(controllerName).map((data: any) => {
-      let result = data.json();
-      return result;
-    });
+      });
   }
 }

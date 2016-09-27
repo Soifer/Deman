@@ -5,17 +5,18 @@ import { Observable } from 'rxjs/Rx';
 import { Dal } from '../../common/services/dal.service';
 import { IService } from './../../common/Iservice';
 import { SeasonModel } from './../models/season';
+import { AbstractBase } from './../../common/services/absract-base.service';
 
 @Injectable()
-export class SeasonService implements IService<SeasonModel> {
+export class SeasonService extends AbstractBase implements IService<SeasonModel> {
     errorMessage: string;
-    _dal: Dal;
-    constructor(private _http: Http) {
-        this._dal = new Dal(_http);
+
+    constructor(http: Http) {
+        super(http);
     }
     getAll(top: number, skip: number): Observable<SeasonModel[]> {
         return this
-            ._dal.GetItemsByUri('/vod/season/get?$top=' + top + '&$skip=' + skip + '&$orderby=DisplayOrder desc')
+            .dal.GetItemsByUri('/vod/season/get?$top=' + top + '&$skip=' + skip + '&$orderby=DisplayOrder desc')
             .map((seasons: Array<SeasonModel>) => {
                 let result: Array<SeasonModel> = [];
                 if (seasons) {
@@ -25,12 +26,5 @@ export class SeasonService implements IService<SeasonModel> {
                 }
                 return result;
             });
-    }
-    getCount(controllerName: string): Observable<any> {
-        console.log('season:' + controllerName);
-        return this._dal.getCount(controllerName).map((data: any) => {
-            let result = data.json();
-            return result;
-        });
     }
 }
