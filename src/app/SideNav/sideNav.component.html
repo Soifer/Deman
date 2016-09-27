@@ -1,4 +1,7 @@
-<div class="sidenav" [class.sideNavCollapsed]='isCollapsed' [class.sideNavExpanded]='!isCollapsed'>
+<div class="sidenav" >
+  <div class="closeContainer">
+    <i *ngIf='!isCollapsed' (click)="onClose()" class="material-icons menuIcon pink100" style="font-size:36px;">close</i>
+  </div>
   <div class="navPilsContainer">
     <ul class="nav nav-pills nav-stacked">
       <li class="sideNavItemHeader" (click)="isListCollapsed = !isListCollapsed">
@@ -6,7 +9,7 @@
           <p>VOD</p>
         </blockquote>
       </li>
-      <li [collapse]="isListCollapsed" class="panel-collapse" *ngFor="let item of items"><a [routerLink]='item.path'  > {{ item.name }} </a></li>
+      <li [collapse]="isListCollapsed" class="panel-collapse" *ngFor="let item of items"><a [routerLink]='item.path'> {{ item.name }} </a></li>
     </ul>
   </div>
   <div>

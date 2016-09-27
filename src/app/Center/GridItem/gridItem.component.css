@@ -40,14 +40,23 @@ md-card  md-card-subtitle{
        display: block;
     }
 }
-
-@media screen and (max-width: 820px) {
+/*@media screen and (max-width: 560px) {
     md-card{
-      width: 93%;    
+      width:1%;    
+    }
+}
+@media screen and (max-width: 600px) {
+    md-card{
+      width: 80%;    
+    }
+}*/
+@media screen and (max-width: 865px) {
+    md-card{
+      width: 85%;    
     }
 }
 @media screen and (max-width: 560px) {
     md-card{
-      width:98%;    
+      width:90%;    
     }
 }

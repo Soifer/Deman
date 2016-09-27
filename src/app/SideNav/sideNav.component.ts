@@ -10,7 +10,7 @@ import { Component, ViewEncapsulation, OnInit, Output, Input, EventEmitter } fro
 export class SideNavComponent {
     @Input() isCollapsed: boolean;
     isListCollapsed = true;
-    @Output() modalItemSelected = new EventEmitter();
+    @Output() sideNavToggle = new EventEmitter();
     items = [
         { name: 'Genre', path: '/grid/0' },
         { name: 'Program', path: '/grid/1' },
@@ -18,6 +18,9 @@ export class SideNavComponent {
         { name: 'Episode', path: '/grid/3' },
         { name: 'Feed', path: '/grid/0' }
     ];
+    onClose() {
+        this.sideNavToggle.emit();
+    }
     constructor() { }
 
 }

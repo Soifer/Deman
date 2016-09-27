@@ -26,9 +26,9 @@ export class GenreService implements IService<Genre> {
       })
       ;
   }
-  getCount(controllerName: string = 'GenreController'): Observable<Number> {
+  getCount(controllerName: string): Observable<any> {
     return this._dal.getCount(controllerName).map((data: any) => {
-      let result: number = Number.parseInt(data.json());
+      let result = data.json();
       return result;
     });
   }

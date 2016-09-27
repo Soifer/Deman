@@ -1,8 +1,3 @@
-/*@font-face {
-    font-family: roboto;
-    src: url('../../fonts/Roboto-Black.ttf');
-}*/
-
 html, body{
   height: 100%;
   font-family: Arial, Helvetica, sans-serif,'Roboto';
@@ -71,14 +66,26 @@ min-height: 800px;
   float:right;
   transition: 0.5s;
 }
-.centerView-70{
-  width:70%;
+.centerView-max{
+  width:100%;
 }
-.centerView-90{
+
+.centerView-min{
   width:90%;
 }
-.centerView-100{
-  width:100%;
+
+#leftView{
+  position: fixed; 
+  z-index: 1;
+  height: 100%; 
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */ 
+}
+.leftView-min{
+  width: 0%;
+}
+
+.leftView-max{
+  width: 10%;
 }
 /*Progress bar start*/
 .progressbarContainer{
@@ -102,3 +109,48 @@ min-height: 800px;
 /*Colors start*/
    .material-icons.pink100 { color: #E91E63; }
  /*Colors end*/
+
+/*Dragula start*/
+ .gu-mirror {
+  position: fixed !important;
+  margin: 0 !important;
+  z-index: 9999 !important;
+  opacity: 0.8;
+  border:1px solid #FCE4EC;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+  filter: alpha(opacity=80);
+}
+.gu-hide {
+  display: none !important;
+}
+.gu-unselectable {
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+}
+.gu-transit {
+  opacity: 0.6;
+     border:1px solid #E91E63;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+  filter: alpha(opacity=20);
+}
+/*Dragula end*/
+
+/*Responsive*/
+@media screen and (max-width: 1024px) {
+    .leftView-max {
+        width:20%;
+    }
+   .centerView-min {
+        width:80%;
+    }
+}
+@media screen and (max-width: 590px) {
+    .leftView-max {
+        width:25%;
+    }
+   .centerView-min {
+        width:75%;
+    }
+}

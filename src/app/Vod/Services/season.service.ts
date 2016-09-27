@@ -25,11 +25,9 @@ export class SeasonService implements IService<SeasonModel> {
                 return result;
             });
     }
-    getCount(controllerName: string = 'SeasonController'): Observable<Number> {
+    getCount(controllerName: string): Observable<any> {
         return this._dal.getCount(controllerName).map((data: any) => {
-            let result: number = Number.parseInt(data.json());
-            console.log(data);
-            
+            let result = data.json();
             return result;
         });
     }
