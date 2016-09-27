@@ -1,6 +1,6 @@
  <div class="progressbarContainer" >
  <progressbar [animate]='true' class="progress-striped " type='info' [max]='totalItems' [value]="items.length" type="">
-   <i>{{items.length}}</i>
+   <i>{{items.length}} / {{totalItems}}</i>
   </progressbar>
  </div>
 <div [dragula]='"cardGrid"' [dragulaModel]='items' class="card-container"

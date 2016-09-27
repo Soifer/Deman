@@ -1,8 +1,8 @@
 export enum VodServices {
-    genre = 1,
-    program = 2,
-    season = 3,
-    episode = 4
+    genre = 0,
+    program,
+    season,
+    episode
 }
 export enum ApiControllers {
     GenreController = VodServices.genre,

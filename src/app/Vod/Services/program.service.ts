@@ -29,4 +29,11 @@ export class ProgramService implements IService<ProgramModel> {
                 return result;
             });
     }
+
+    getCount(controllerName: string): Observable<any> {
+        return this._dal.getCount(controllerName).map((data: any) => {
+            let result = data.json();
+            return result;
+        });
+    }
 }

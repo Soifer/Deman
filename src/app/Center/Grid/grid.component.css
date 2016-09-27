@@ -37,8 +37,8 @@
       width:50%;
     }
 }
-@media screen and (max-width: 560px) {
+@media screen and (max-width: 600px) {
     gridItem{
-      width:97%;    
+      width:100%;    
     }
 }

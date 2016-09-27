@@ -10,6 +10,6 @@ import { DataResolver } from './app.resolver';
 
 export const ROUTES: Routes = [
   { path: 'grid', component: GridComponent, pathMatch: 'full' },
-  { path: 'grid/:id', component: GridComponent },
+  { path: 'grid/:service', component: GridComponent },
   { path: '', component: NoContent }
 ];

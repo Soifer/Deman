@@ -1,25 +1,27 @@
 /* The side navigation menu */
 .sidenav {
-    height: 100%; /* 100% Full-height */  
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
-    width:0px;
+    width:100%;
     top: 0;
     left: 0;
+    height: 100%; 
     background-color:#414143;
-    /*box-shadow: 0px 3px 5px 4px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);*/
- /* Black*/
     overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 60px; /* Place content 60px from the top */
+    /*padding-top: 60px; */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
 }
-.sideNavCollapsed{
-    width: 0;
+
+.closeContainer{
+    padding-bottom: 65px;
+}
+.closeContainer .menuIcon{
+    cursor:pointer;
+    float: right;
+    padding: 14px 10px;
 }
 
-.sideNavExpanded{
-    width: 10%;  /* 0 width - change this with JavaScript */
-}
+
+
+
 /* The navigation menu links */
 .sidenav a {
     padding: 8px 8px 0 32px;
@@ -48,10 +50,21 @@ blockquote {
     border-left: 5px solid #E91E63;
 }
 
-/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+
 #main {
     transition: margin-left .5s;
     padding: 20px;
+}
+
+side{
+    width:200px;
+}
+
+md-sidenav{
+   margin:0px; padding-left:0px; padding-top:15px;
+}
+.navPilsContainer{
+  margin-bottom:5px;
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
@@ -60,7 +73,4 @@ blockquote {
     .sidenav a {font-size: 18px;}
 }
 
-   side {width:200px;}
-
-   md-sidenav{margin:0px; padding-left:0px; padding-top:15px;}
-   .navPilsContainer{margin-bottom:5px;}
+   

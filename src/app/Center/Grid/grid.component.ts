@@ -9,7 +9,7 @@ import { Genre } from '../../Vod/Models/genre';
 import { IGridCommon } from '../../Vod/Models/IgridCommon';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { DragulaService } from 'ng2-dragula/ng2-dragula';
-
+import { ApiControllers, VodServices } from '../Enums';
 console.log('`GRID` component loaded asynchronously');
 
 @Component({
@@ -24,6 +24,7 @@ console.log('`GRID` component loaded asynchronously');
 
 
 export class GridComponent implements OnInit, OnDestroy {
+  urlServiceParam: string =  'service';
   items: IGridCommon[] = [];
   subscriber: any;
   routeSubscriber: any;
@@ -45,6 +46,9 @@ export class GridComponent implements OnInit, OnDestroy {
   itemHeight: number = 155;
   rows: number;
   columns: number;
+
+
+
 
   constructor(private context: Http, public route: ActivatedRoute, private dragulaService: DragulaService) {
     this.windowHeight = window.innerHeight;
@@ -94,9 +98,10 @@ export class GridComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
+
     this.getItemsCapacity();
     this.routeSubscriber = this.route.params.subscribe(params => {
-      this.serviceId = Number.parseInt(params['id']);
+      this.serviceId = Number.parseInt(VodServices[params[this.urlServiceParam]]);
       this.items = [];
       this.getCount();
       this.getItems();
@@ -118,8 +123,8 @@ export class GridComponent implements OnInit, OnDestroy {
 
     });
   }
-  getCount() {
-    this.total = this.services[isNaN(this.serviceId) ? 0 : this.serviceId].getCount('EpisodeController')
+  getCount() {  
+    this.total = this.services[isNaN(this.serviceId) ? 0 : this.serviceId].getCount(ApiControllers[this.serviceId])
       .subscribe(data => {
         this.totalItems = data;
       });
