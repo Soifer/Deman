@@ -6,13 +6,14 @@ import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 import { CollapseModule, Ng2BootstrapModule, ModalModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { DragulaModule } from 'ng2-dragula/ng2-dragula';
-import { SideNavComponent } from './SideNav/sideNav.component';
-import { MenuBarComponent } from './MenuBar/menuBar.component';
-import { GridComponent } from './Center/Grid/grid.component';
-import { GridItemComponent } from './Center/GridItem/gridItem.component';
-import { ExpandedCardComponent } from './ExpandedItem/expandedItem.component';
-import { GenreService } from './Vod/Services/genre.service';
 
+import { SideNavComponent } from './projects/vod/components/side-nav.component';
+import { MenuBarComponent } from './projects/vod/components/menu-bar.component';
+import { GridComponent } from './projects/common/components/grid.component';
+import { GridItemComponent } from './projects/vod/components/grid-item.component';
+import { ExpandedCardComponent } from './projects/vod/components/expanded-item.component';
+import { GenreService } from './projects/vod/services/genre.service';
+import { NoContent } from './projects/common/components/no-content';
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -23,14 +24,11 @@ import { App } from './app.component';
 import { MdModule } from './md.module';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState } from './app.service';
-import { Home } from './home';
-import { About } from './about';
-import { NoContent } from './no-content';
+
 
 import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 
 // Import diretives
-import { XLarge } from './home/x-large';
 import { MdIconRegistry } from '@angular2-material/icon';
 // Application wide providers
 const APP_PROVIDERS = [
@@ -44,11 +42,9 @@ const APP_PROVIDERS = [
 @NgModule({
   bootstrap: [App],
   declarations: [
-    App,
-    About,
-    Home,
-    NoContent,
-    XLarge, SideNavComponent, MenuBarComponent, GridComponent, GridItemComponent, ExpandedCardComponent
+    App, NoContent,
+    SideNavComponent, MenuBarComponent, GridComponent,
+    GridItemComponent, ExpandedCardComponent
   ],
   imports: [ // import Angular's modules
     BrowserModule,

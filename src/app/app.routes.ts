@@ -1,11 +1,10 @@
 import { Routes, RouterModule } from '@angular/router';
-import { Home } from './home';
-import { About } from './about';
-import { NoContent } from './no-content';
-import { GridComponent } from './Center/Grid/grid.component';
-import { GridItemComponent } from './Center/GridItem/gridItem.component';
-
 import { DataResolver } from './app.resolver';
+
+import { NoContent } from './projects/common/components/no-content';
+import { GridComponent } from './projects/common/components/grid.component';
+
+
 
 
 export const ROUTES: Routes = [

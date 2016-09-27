@@ -1,0 +1,25 @@
+ <div class="progressbarContainer" >
+ <progressbar [animate]='true' class="progress-striped " type='info' [max]='totalItems' [value]="items.length" type="">
+   <i>{{items.length}} / {{totalItems}}</i>
+  </progressbar>
+ </div>
+<div [dragula]='"cardGrid"' [dragulaModel]='items' class="card-container"
+     infinite-scroll
+     [infiniteScrollDistance]="2"
+     [infiniteScrollThrottle]="400"     
+     (scrolled)="onScroll()">
+  <grid-item  (doubleClick)="setExpandedItem(item)"  *ngFor="let item of items" [item]='item'></grid-item>  
+  <expanded-item (closeElement)="clearItem($event)" *ngIf="selectedItem"  [item]="selectedItem"></expanded-item>
+</div>
+<div class="fa-container" *ngIf="isLoading">
+  <md-progress-circle  mode="indeterminate" color="accent"></md-progress-circle>
+  <!--<i  class="fa fa-spinner fa-pulse fa-5x fa-fw "></i>-->
+  <!--<i class="fa fa-cog fa-spin fa-3x fa-fw"></i>-->
+<!--<md-progress-bar mode="determinate" value="myValue"></md-progress-bar>
+<br><br><br><br><br><br><br><br>
+<md-progress-bar mode="indeterminate"></md-progress-bar><br><br><br><br><br><br><br><br>
+<md-progress-bar mode="buffer" value="" bufferValue="myBufferValue"></md-progress-bar><br><br><br><br><br><br><br><br>
+<md-progress-bar mode="query"></md-progress-bar>-->
+</div>
+
+<!--(pan)="setExpandedItem(item)"-->

@@ -1,10 +1,10 @@
 <div class=" overall">
     <div id='leftView' [class.leftView-max]='!isCollapsed' [class.leftView-min]='isCollapsed'>
-        <sideNav (sideNavToggle)='isCollapsed=!isCollapsed;' [isCollapsed]="isCollapsed"></sideNav>
+        <side-nav (sideNavToggle)='isCollapsed=!isCollapsed;' [isCollapsed]="isCollapsed"></side-nav>
     </div>
     <div [class.centerView-min]='!isCollapsed' [class.centerView-max]='isCollapsed' id="centerView">
-        <menuBar [isCollapsed]="isCollapsed" (menuBarToggle)="isCollapsed=!isCollapsed; "></menuBar>
+        <menu-bar [isCollapsed]="isCollapsed" (menuBarToggle)="isCollapsed=!isCollapsed; "></menu-bar>
         <router-outlet></router-outlet>
     </div>
-    <expandedItem *ngIf="selectedItem" [item]="selectedItem"></expandedItem>
+    <expanded-item *ngIf="selectedItem" [item]="selectedItem"></expanded-item>
 </div>
