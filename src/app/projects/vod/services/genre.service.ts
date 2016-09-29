@@ -1,17 +1,19 @@
 import { Http, Response } from '@angular/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 
 import { Dal } from '../../common/services/dal.service';
 import { IService } from './../../common/Iservice';
 import { GenreModel } from './../models//genre';
 import { AbstractBase } from './../../common/services/absract-base.service';
+import { ApiControllers } from '../../common/Enums';
 
-@Injectable()
+
 export class GenreService extends AbstractBase implements IService<GenreModel> {
   errorMessage: string;
 
   constructor(http: Http) {
+    console.log('genre ctor');
     super(http);
   }
   getAll(top: number, skip: number): Observable<GenreModel[]> {
@@ -26,5 +28,8 @@ export class GenreService extends AbstractBase implements IService<GenreModel> {
         }
         return result;
       });
+  }
+  getCount() {
+    return super.getCount(ApiControllers[ApiControllers.GenreController]);
   }
 }

@@ -12,10 +12,10 @@ export class SideNavComponent {
     isListCollapsed = true;
     @Output() sideNavToggle = new EventEmitter();
     items = [
-        { name: 'Genre', path: '/grid/0' },
-        { name: 'Program', path: '/grid/1' },
-        { name: 'Season', path: '/grid/2' },
-        { name: 'Episode', path: '/grid/3' },
+        { name: 'Genre', path: '/vod/genre' },
+        { name: 'Program', path: '/vod/program' },
+        { name: 'Season', path: '/vod/season' },
+        { name: 'Episode', path: '/vod/episode' },
         { name: 'Feed', path: '/grid/0' }
     ];
     onClose() {

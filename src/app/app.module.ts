@@ -12,8 +12,8 @@ import { MenuBarComponent } from './projects/vod/components/menu-bar.component';
 import { GridComponent } from './projects/common/components/grid.component';
 import { GridItemComponent } from './projects/vod/components/grid-item.component';
 import { ExpandedCardComponent } from './projects/vod/components/expanded-item.component';
-import { GenreService } from './projects/vod/services/genre.service';
 import { NoContent } from './projects/common/components/no-content';
+import { VodController } from './projects/vod/components/vod-controller.component';
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -42,7 +42,7 @@ const APP_PROVIDERS = [
 @NgModule({
   bootstrap: [App],
   declarations: [
-    App, NoContent,
+    App, NoContent, VodController,
     SideNavComponent, MenuBarComponent, GridComponent,
     GridItemComponent, ExpandedCardComponent
   ],
@@ -55,7 +55,7 @@ const APP_PROVIDERS = [
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
-    APP_PROVIDERS, MdIconRegistry, GenreService
+    APP_PROVIDERS, MdIconRegistry
   ]
 })
 export class AppModule {

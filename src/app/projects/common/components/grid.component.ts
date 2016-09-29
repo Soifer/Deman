@@ -1,17 +1,15 @@
-import { Component, OnInit, OnDestroy, ElementRef } from '@angular/core';
-import { Http } from '@angular/http';
+import { Component, OnInit, OnDestroy, Provider, ReflectiveInjector } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
+import { Http } from '@angular/http';
 
-import { GenreService } from '../../vod/services/genre.service';
 import { IService } from '../Iservice';
-import { ProgramService } from '../../vod/services/program.service';
-import { EpisodeService } from '../../vod/services/episode.service';
-import { SeasonService } from '../../vod/services/season.service';
+import { Constants } from '../Constants';
+import { VodFactory } from '../../vod/services/vod.factory.service';
+
 import { IGridCommon } from '../Igrid-common';
 import { DragulaService } from 'ng2-dragula/ng2-dragula';
 import { ApiControllers, VodServices } from '../Enums';
-
 
 @Component({
   selector: 'grid',
@@ -19,20 +17,12 @@ import { ApiControllers, VodServices } from '../Enums';
   styleUrls: ['grid.component.css']
 })
 
-
-
 export class GridComponent implements OnInit, OnDestroy {
-  urlServiceParam: string = 'service';
   items: IGridCommon[] = [];
-  subscriber: Subscription;
-  routeSubscriber: Subscription;
-  counterSubscriber: Subscription;
-  services: any[] = [];
   selectedItem: any;
   isLoading: boolean = true;
   skip: number = 0;
   top: number;
-  serviceId: number = 0;
   isScrolled = false;
   currPosition: number;
   lastPosition: number = 150;
@@ -42,35 +32,34 @@ export class GridComponent implements OnInit, OnDestroy {
   windowWidth: number;
   itemWidth: number = 274;
   itemHeight: number = 155;
-  rows: number;
-  columns: number;
 
+  private _currentService: IService<any>;
+  private _subscriber: Subscription;
+  private _counterSubscriber: Subscription;
+  private _factory: VodFactory;
 
+  constructor(public route: ActivatedRoute, private _dragulaService: DragulaService, private _http: Http) {
+    console.log('grid ctor');
 
+    this._factory = new VodFactory(this._http);
 
-  constructor(private context: Http, public route: ActivatedRoute, private dragulaService: DragulaService) {
     this.windowHeight = window.innerHeight;
     this.windowWidth = window.innerWidth;
 
-    this.services.push(new GenreService(context));
-    this.services.push(new ProgramService(context));
-    this.services.push(new SeasonService(context));
-    this.services.push(new EpisodeService(context));
-
-    dragulaService.setOptions('cardGrid', {
+    _dragulaService.setOptions('cardGrid', {
       revertOnSpill: true
     });
-    dragulaService.dropModel.subscribe((value) => {
+    _dragulaService.dropModel.subscribe((value) => {
       this.onDropModel(value.slice(1));
     });
-    dragulaService.removeModel.subscribe((value) => {
+    _dragulaService.removeModel.subscribe((value) => {
       this.onRemoveModel(value.slice(1));
     });
   }
 
   getItemsCapacity() {
-    let rows = parseInt((this.windowWidth / this.itemWidth).toFixed(), 10);
-    let columns = parseInt((this.windowHeight / this.itemHeight).toFixed(), 10);
+    let rows = +(this.windowWidth / this.itemWidth).toFixed();
+    let columns = +(this.windowHeight / this.itemHeight).toFixed();
     this.top = (rows * columns);
   }
 
@@ -85,13 +74,15 @@ export class GridComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.getItemsCapacity();
-    this.routeSubscriber = this.route.params.subscribe(params => {
-      this.serviceId = Number.parseInt(params[this.urlServiceParam]);
+    let serviceName = this.route.snapshot.params[Constants.SERVICE_KEY];
+    let instructions = this.route.snapshot.params[Constants.SEARCH_KEY];
+    console.log('init:' + serviceName);
 
-      this.items = [];
-      this.getCount();
-      this.getItems();
-    });
+    this.getService(serviceName);
+
+    this.items = [];
+    this.getCount();
+    this.getItems();
   }
 
   clearItem(data) {
@@ -99,7 +90,7 @@ export class GridComponent implements OnInit, OnDestroy {
   }
 
   getItems() {
-    this.subscriber = this.services[this.serviceId ? this.serviceId : 0].getAll(this.top, this.skip).subscribe(data => {
+    this._subscriber = this._currentService.getAll(this.top, this.skip).subscribe(data => {
       this.isLoading = false;
       data.forEach(element => {
         this.items.push(element);
@@ -108,23 +99,30 @@ export class GridComponent implements OnInit, OnDestroy {
     });
   }
   getCount() {
-    this.counterSubscriber = this.services[this.serviceId ? this.serviceId : 0].getCount(ApiControllers[this.serviceId ? this.serviceId : 0])
+    this._counterSubscriber = this._currentService.getCount()
       .subscribe(data => {
         this.totalItems = data;
       });
   }
   ngOnDestroy() {
-    this.subscriber.unsubscribe();
-    this.routeSubscriber.unsubscribe();
-    this.counterSubscriber.unsubscribe();
-    this.services = [];
+    this._subscriber.unsubscribe();
+    this._counterSubscriber.unsubscribe();
+    this._dragulaService.destroy('cardGrid');
   }
 
-  private onDropModel(args) {
+  private onDropModel(args: Element[]) {
     let [el, target, source] = args;
+    console.log('drop targ: ' + target + ',so: ' + source);
+
   }
 
   private onRemoveModel(args) {
     let [el, source] = args;
+    console.log('drop el: ' + el + ',so: ' + source);
+  }
+
+  private getService(name: string) {
+    this._currentService = this._factory.GetInstanceByKey(name);
+    console.log(this._currentService);
   }
 }

@@ -3,8 +3,7 @@
         <side-nav (sideNavToggle)='isCollapsed=!isCollapsed;' [isCollapsed]="isCollapsed"></side-nav>
     </div>
     <div [class.centerView-min]='!isCollapsed' [class.centerView-max]='isCollapsed' id="centerView">
-        <menu-bar [isCollapsed]="isCollapsed" (menuBarToggle)="isCollapsed=!isCollapsed; "></menu-bar>
-        <router-outlet></router-outlet>
+        <vod-controller [isCollapsed]="isCollapsed" (menuBarToggle)="isCollapsed=!isCollapsed;"></vod-controller>
     </div>
     <expanded-item *ngIf="selectedItem" [item]="selectedItem"></expanded-item>
 </div>

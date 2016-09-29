@@ -6,6 +6,7 @@ import { Dal } from '../../common/services/dal.service';
 import { IService } from './../../common/Iservice';
 import { EpisodeModel } from './../models/episode';
 import { AbstractBase } from './../../common/services/absract-base.service';
+import { ApiControllers } from '../../common/Enums';
 
 @Injectable()
 export class EpisodeService extends AbstractBase implements IService<EpisodeModel>  {
@@ -27,6 +28,9 @@ export class EpisodeService extends AbstractBase implements IService<EpisodeMode
         }
         return result;
       });
+  }
+  getCount() {
+    return super.getCount(ApiControllers[ApiControllers.EpisodeController]);
   }
 }
 

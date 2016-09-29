@@ -5,10 +5,10 @@ import { Observable } from 'rxjs/Rx';
 import { Dal } from './dal.service';
 
 export abstract class AbstractBase {
-    dal: Dal;
+   public readonly dal: Dal;
 
-    constructor(private _http: Http) {
-        this.dal = new Dal(_http);
+    constructor(http: Http) {
+        this.dal = new Dal(http);
     }
     getCount(controllerName: string): Observable<any> {
         return this.dal.getCount(controllerName).map((data: any) => {

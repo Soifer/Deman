@@ -6,12 +6,14 @@ import { Dal } from '../../common/services/dal.service';
 import { IService } from './../../common/Iservice';
 import { ProgramModel } from './../models/program';
 import { AbstractBase } from './../../common/services/absract-base.service';
+import { ApiControllers } from '../../common/Enums';
 
 @Injectable()
 export class ProgramService extends AbstractBase implements IService<ProgramModel> {
     errorMessage: string;
 
     constructor(http: Http) {
+        console.log('program ctor');
         super(http);
     }
 
@@ -28,4 +30,7 @@ export class ProgramService extends AbstractBase implements IService<ProgramMode
                 return result;
             });
     }
+  getCount() {
+    return super.getCount(ApiControllers[ApiControllers.ProgramController]);
+  }
 }
