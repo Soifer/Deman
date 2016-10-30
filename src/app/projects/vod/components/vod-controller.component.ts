@@ -3,7 +3,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Subscription, BehaviorSubject } from 'rxjs/Rx';
 
 import { Constants } from '../../common/Constants';
-import { GridComponent } from '../../common/components/grid.component';
+import { GridComponent } from '../../common/components/grid/grid.component';
 import { MenuBarComponent } from './menu-bar.component';
 import { VodServices } from '../../common/Enums';
 import { OperationOrder } from '../models/operation-orders';

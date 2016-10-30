@@ -3,13 +3,13 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 import { Http } from '@angular/http';
 
-import { IService } from '../Iservice';
-import { Constants } from '../Constants';
-import { VodFactory } from '../../vod/services/vod.factory.service';
+import { IService } from '../../Iservice';
+import { Constants } from '../../Constants';
+import { VodFactory } from '../../../vod/services/vod.factory.service';
 
-import { IGridCommon } from '../Igrid-common';
+import { IGridCommon } from '../../Igrid-common';
 import { DragulaService } from 'ng2-dragula/ng2-dragula';
-import { ApiControllers, VodServices } from '../Enums';
+import { ApiControllers, VodServices } from '../../Enums';
 
 @Component({
   selector: 'grid',
@@ -32,6 +32,8 @@ export class GridComponent implements OnInit, OnDestroy {
   windowWidth: number;
   itemWidth: number = 274;
   itemHeight: number = 155;
+  node: any;
+
 
   private _currentService: IService<any>;
   private _subscriber: Subscription;
