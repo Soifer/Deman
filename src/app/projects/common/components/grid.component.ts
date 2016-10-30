@@ -76,7 +76,7 @@ export class GridComponent implements OnInit, OnDestroy {
     this.getItemsCapacity();
     let serviceName = this.route.snapshot.params[Constants.SERVICE_KEY];
     let instructions = this.route.snapshot.params[Constants.SEARCH_KEY];
-    console.log('init:' + serviceName);
+    console.log('init. Service: ' + serviceName + ', key: ' + instructions);
 
     this.getService(serviceName);
 

@@ -18,7 +18,7 @@ import { VodController } from './projects/vod/components/vod-controller.componen
  * Platform and Environment providers/directives/pipes
  */
 import { ENV_PROVIDERS } from './environment';
-import { ROUTES } from './app.routes';
+import { AppRoutingModule } from './app.routes';
 // App is our top level component
 import { App } from './app.component';
 import { MdModule } from './md.module';
@@ -50,7 +50,7 @@ const APP_PROVIDERS = [
     BrowserModule,
     ReactiveFormsModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES, { useHash: false }),
+    AppRoutingModule,
     MdModule.forRoot(), CollapseModule, ModalModule, Ng2BootstrapModule, FormsModule, InfiniteScrollModule, DragulaModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
