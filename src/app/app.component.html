@@ -5,5 +5,6 @@
     <div [class.centerView-min]='!isCollapsed' [class.centerView-max]='isCollapsed' id="centerView">
         <vod-controller [isCollapsed]="isCollapsed" (menuBarToggle)="isCollapsed=!isCollapsed;"></vod-controller>
     </div>
+      <float-toolbar></float-toolbar>
     <expanded-item *ngIf="selectedItem" [item]="selectedItem"></expanded-item>
 </div>

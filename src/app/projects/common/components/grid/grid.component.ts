@@ -3,13 +3,13 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 import { Http } from '@angular/http';
 
-import { IService } from '../Iservice';
-import { Constants } from '../Constants';
-import { VodFactory } from '../../vod/services/vod.factory.service';
+import { IService } from '../../Iservice';
+import { Constants } from '../../Constants';
+import { VodFactory } from '../../../vod/services/vod.factory.service';
 
-import { IGridCommon } from '../Igrid-common';
+import { IGridCommon } from '../../Igrid-common';
 import { DragulaService } from 'ng2-dragula/ng2-dragula';
-import { ApiControllers, VodServices } from '../Enums';
+import { ApiControllers, VodServices } from '../../Enums';
 
 @Component({
   selector: 'grid',
@@ -32,6 +32,8 @@ export class GridComponent implements OnInit, OnDestroy {
   windowWidth: number;
   itemWidth: number = 274;
   itemHeight: number = 155;
+  node: any;
+
 
   private _currentService: IService<any>;
   private _subscriber: Subscription;
@@ -76,7 +78,7 @@ export class GridComponent implements OnInit, OnDestroy {
     this.getItemsCapacity();
     let serviceName = this.route.snapshot.params[Constants.SERVICE_KEY];
     let instructions = this.route.snapshot.params[Constants.SEARCH_KEY];
-    console.log('init:' + serviceName);
+    console.log('init. Service: ' + serviceName + ', key: ' + instructions);
 
     this.getService(serviceName);
 
