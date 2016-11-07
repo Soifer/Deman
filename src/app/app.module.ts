@@ -53,7 +53,7 @@ const APP_PROVIDERS = [
     BrowserModule,
     ReactiveFormsModule,
     HttpModule,
-    AppRoutingModule,
+    AppRoutingModule, Ng2CompleterModule,
     MdModule.forRoot(), CollapseModule, ModalModule, Ng2BootstrapModule, FormsModule, InfiniteScrollModule, DragulaModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
