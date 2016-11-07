@@ -5,8 +5,8 @@ import {
 import { Http } from '@angular/http';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs/Rx';
-import { IGridCommon } from '../../common/Igrid-common';
-import { UiViewModel } from '../../common/models/ui-view-model';
+import { IGridCommon } from '../../../common/Igrid-common';
+import { UiViewModel } from '../../../common/models/ui-view-model';
 
 @Component({
     selector: 'grid-item',

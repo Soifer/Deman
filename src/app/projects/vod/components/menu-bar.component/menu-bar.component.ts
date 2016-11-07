@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter, Input, OnInit, OnDestroy } from '@angular/core';
 import { Subscription, BehaviorSubject } from 'rxjs/Rx';
 
-import { OperationOrder } from '../models/operation-orders';
+import { OperationOrder } from '../../models/operation-orders';
 
 @Component({
     selector: 'menu-bar',

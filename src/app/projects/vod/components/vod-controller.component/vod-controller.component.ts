@@ -2,11 +2,11 @@ import { Component, OnInit, OnDestroy, Input, Output, EventEmitter, ReflectiveIn
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Subscription, BehaviorSubject } from 'rxjs/Rx';
 
-import { Constants } from '../../common/Constants';
-import { GridComponent } from '../../common/components/grid/grid.component';
-import { MenuBarComponent } from './menu-bar.component';
-import { VodServices } from '../../common/Enums';
-import { OperationOrder } from '../models/operation-orders';
+import { Constants } from '../../../common/Constants';
+import { GridComponent } from '../../../common/components/grid/grid.component';
+import { MenuBarComponent } from './../menu-bar.component';
+import { VodServices } from '../../../common/Enums';
+import { OperationOrder } from '../../models/operation-orders';
 @Component({
     selector: 'vod-controller',
     templateUrl: './vod-controller.component.html'

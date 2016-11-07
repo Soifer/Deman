@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { GenreModel } from '../models/genre';
+import { GenreModel } from '../../models/genre';
 
 @Component({
   selector: 'expanded-item',
