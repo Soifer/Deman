@@ -4,7 +4,7 @@ import { Subscription, BehaviorSubject } from 'rxjs/Rx';
 
 import { Constants } from '../../../common/Constants';
 import { GridComponent } from '../../../common/components/grid/grid.component';
-import { MenuBarComponent } from './../menu-bar.component';
+import { MenuBarComponent } from './../menu-bar/menu-bar.component';
 import { VodServices } from '../../../common/Enums';
 import { OperationOrder } from '../../models/operation-orders';
 @Component({

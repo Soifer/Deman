@@ -4,7 +4,7 @@ import { DataResolver } from './app.resolver';
 
 import { NoContent } from './projects/common/components/no-content';
 import { GridComponent } from './projects/common/components/grid/grid.component';
-import { VodController } from './projects/vod/components/vod-controller.component';
+import { VodController } from './projects/vod/components/vod-controller/vod-controller.component';
 
 @NgModule({
   imports: [

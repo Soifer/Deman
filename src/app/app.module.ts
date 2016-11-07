@@ -8,14 +8,14 @@ import { CollapseModule, Ng2BootstrapModule, ModalModule } from 'ng2-bootstrap/n
 import { DragulaModule } from 'ng2-dragula/ng2-dragula';
 
 
-import { SideNavComponent } from './projects/vod/components/side-nav.component';
-import { MenuBarComponent } from './projects/vod/components/menu-bar.component';
+import { SideNavComponent } from './projects/vod/components/side-nav/side-nav.component';
+import { MenuBarComponent } from './projects/vod/components/menu-bar/menu-bar.component';
 import { GridComponent } from './projects/common/components/grid/grid.component';
-import { GridItemComponent } from './projects/vod/components/grid-item.component';
-import { ExpandedCardComponent } from './projects/vod/components/expanded-item.component';
+import { GridItemComponent } from './projects/vod/components/grid-item/grid-item.component';
+import { ExpandedCardComponent } from './projects/vod/components/expanded-item/expanded-item.component';
 import { NoContent } from './projects/common/components/no-content';
 import { Ng2CompleterModule } from 'ng2-completer';
-import { VodController } from './projects/vod/components/vod-controller.component';
+import { VodController } from './projects/vod/components/vod-controller/vod-controller.component';
 import { FloatToolbar } from './projects/common/components/float-toolbar/float-toolbar.component';
 /*
  * Platform and Environment providers/directives/pipes
