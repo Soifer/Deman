@@ -15,21 +15,20 @@
       "es6"
     ],
     "types": [
-      "core-js",
       "hammerjs",
       "jasmine",
       "node",
-      "protractor",
       "selenium-webdriver",
       "source-map",
       "uglify-js",
-      "webpack",
-      "moment"
+      "webpack"
     ]
   },
   "exclude": [
     "node_modules",
-    "dist"
+    "dist",
+    "src/app/app.e2e.ts",
+    "src/app/app.spec.ts"
   ],
   "awesomeTypescriptLoaderOptions": {
     "forkChecker": true,

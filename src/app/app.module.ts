@@ -7,8 +7,6 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 import { CollapseModule, Ng2BootstrapModule, ModalModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { DragulaModule } from 'ng2-dragula/ng2-dragula';
 
-
-import { SideNavComponent } from './projects/vod/components/side-nav/side-nav.component';
 import { MenuBarComponent } from './projects/vod/components/menu-bar/menu-bar.component';
 import { GridComponent } from './projects/common/components/grid/grid.component';
 import { GridItemComponent } from './projects/vod/components/grid-item/grid-item.component';
@@ -46,7 +44,7 @@ const APP_PROVIDERS = [
   bootstrap: [App],
   declarations: [
     App, NoContent, VodController,
-    SideNavComponent, MenuBarComponent, GridComponent,
+    MenuBarComponent, GridComponent,
     GridItemComponent, ExpandedCardComponent, FloatToolbar
   ],
   imports: [ // import Angular's modules

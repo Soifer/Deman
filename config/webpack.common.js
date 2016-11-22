@@ -134,7 +134,9 @@ module.exports = {
         loaders: [
           'awesome-typescript-loader',
           'angular2-template-loader',
-          '@angularclass/hmr-loader'
+          '@angularclass/hmr-loader',
+          'angular2-load-children-loader',
+          'angular2-router-loader'
         ],
         exclude: [/\.(spec|e2e)\.ts$/]
       },
@@ -198,7 +200,7 @@ module.exports = {
      *
      * See: https://github.com/s-panferov/awesome-typescript-loader#forkchecker-boolean-defaultfalse
      */
-    new ForkCheckerPlugin(),
+    // new ForkCheckerPlugin(),
     /*
      * Plugin: CommonsChunkPlugin
      * Description: Shares common code between the pages.

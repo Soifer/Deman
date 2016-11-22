@@ -1,4 +1,4 @@
-<div class=" overall">
+<!--<div class=" overall">
     <div id='leftView' [class.leftView-max]='!isCollapsed' [class.leftView-min]='isCollapsed'>
         <side-nav (sideNavToggle)='isCollapsed=!isCollapsed;' [isCollapsed]="isCollapsed"></side-nav>
     </div>
@@ -7,4 +7,7 @@
     </div>
       <float-toolbar></float-toolbar>
     <expanded-item *ngIf="selectedItem" [item]="selectedItem"></expanded-item>
-</div>
+</div>-->
+<router-outlet name="side"></router-outlet>
+<router-outlet name="other"></router-outlet>
+<router-outlet></router-outlet>

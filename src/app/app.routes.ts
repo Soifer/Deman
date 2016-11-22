@@ -9,11 +9,12 @@ import { VodController } from './projects/vod/components/vod-controller/vod-cont
 @NgModule({
   imports: [
     RouterModule.forRoot([
-      { path: 'vod/:service', component: VodController },
       { path: 'grid', component: GridComponent },
-      { path: '', component: NoContent, pathMatch: 'full' },
-      { path: '**', redirectTo: '', pathMatch: 'full' }
-    ])
+      { path: '', redirectTo:'/sidenav', pathMatch: 'full' },
+      { path: 'sidenav', loadChildren: './projects/vod/components/side-nav/index#SideNavModule' },
+      { path: '**', redirectTo: '', pathMatch: 'full' },
+    ], { enableTracing: true }
+    )
   ],
   exports: [
     RouterModule
